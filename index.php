@@ -11,9 +11,6 @@ require_once('includes/header.php');?>
 
 
 </div>
-<?php
-phpinfo();
-?>
 
 
 <iframe src="https://snazzymaps.com/embed/55199" width="500px" height="300px" style="border:none; margin-left: 35px;"></iframe>

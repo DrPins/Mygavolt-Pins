@@ -244,13 +244,13 @@ if(isset($_SESSION['username'])){
 				<form action="" method="POST" enctype="multipart/form-data">
 
 				<?php
-				$select_promo = $db->prepare("SELECT * FROM promotions where id = '$produit->promotion'");
+				$select_promo = $db->prepare("SELECT * FROM promotions where id = '$produit->id_promotion'");
 				$select_promo->execute();
 				$promo_label = $select_promo->fetch(PDO::FETCH_OBJ);
 				$promo_label = $promo_label->label;
 
 
-				$select_cat = $db->prepare("SELECT * FROM categories where id = '$produit->category'");
+				$select_cat = $db->prepare("SELECT * FROM categories where id = '$produit->id_category'");
 				$select_cat->execute();
 				$cat_label = $select_cat->fetch(PDO::FETCH_OBJ);
 				$cat_label = $cat_label->label;
@@ -378,7 +378,7 @@ if(isset($_SESSION['username'])){
 				$promo_id = $select_promo->fetch(PDO::FETCH_OBJ);
 				$promo_id = $promo_id->id;
 
-				$update = $db->prepare("UPDATE products SET label='$label', description='$description', price='$price', promotion='$promo_id', category='$cat_id', tva='$tva', nom_img ='$timestamp' WHERE id=$id");
+				$update = $db->prepare("UPDATE products SET label='$label', description='$description', price='$price', id_promotion='$promo_id', id_category='$cat_id', tva='$tva', nom_img ='$timestamp' WHERE id=$id");
 				$update->execute();
 
 				?><meta http-equiv="refresh" content="1;url=admin.php?action=modify"/><?php

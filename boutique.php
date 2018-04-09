@@ -111,7 +111,9 @@ else{
 						while($s=$select->fetch(PDO::FETCH_OBJ)){?>
 
 						<?php
-						$pourcentage_id = $s->promotion;
+
+
+						$pourcentage_id = $s->id_promotion;
 
 						$promo = $db->prepare("SELECT * FROM promotions where id = '$pourcentage_id'");
 						$promo->execute();
@@ -136,6 +138,7 @@ else{
 		                        <div class="col-xs-12 col-md-6">
 		                            <p class="lead">
 		                                <?php
+
 																			if ($p->label != 0){
 																				$prix_a_afficher = number_format($s->price *(100 - $p->label)/100, 2, ',', ' ');
 																				?><h5 class="prix_barre"><?php echo $s->price;?>€ HT</h5>

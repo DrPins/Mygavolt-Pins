@@ -8,30 +8,34 @@ if(!isset($_SESSION['user_id'])){
 
 if(isset($_POST['submit'])){
 
+  // récupération de la saisie mail et pwd
 	$email = $_POST['inputEmail'];
-	$pwd = $_POST['inputPassword'];
+	$pwdSubmitted = $_POST['inputPassword'];
 
-	if($email&&$pwd){
+  // si les 2 champs sont bien remplis
+	if($email&&$pwdSubmitted){
+    // on regarde en base en mettant l'adresse mail en parametre
 		$select = $db->query("SELECT * FROM clients WHERE email='$email'");
+    // si on récupère au moins un résultat
 		if($select->fetchColumn()){
+
 			$select = $db->query("SELECT * FROM clients WHERE email='$email'");
 			$result = $select->fetch(PDO::FETCH_OBJ);
-			$_SESSION['user_id'] = $result->id;
-			$_SESSION['user_firstname'] = $result->firstname;
-			$_SESSION['user_email'] = $result->email;
-			$_SESSION['user_pw'] = $result->pwd;
-
+        // on vérifie que le mot de passe encrypté en base correspond bien à celui soumis
+        if (password_verify($pwdSubmitted, $result->pwd )){
+  			$_SESSION['user_id'] = $result->id;
+  			$_SESSION['user_firstname'] = $result->firstname;
+  			$_SESSION['user_email'] = $result->email;
+  			//$_SESSION['user_pw'] = $result->pwd;
+        }
 
 		}
 		else{
-			echo '<h2>L\'identifiant n\'existe pas</h2>';
+			echo '<h2>L\'identifiant n\'existe pas ou le mot de passe est incorect </h2>';
 		}
 
-
-	//header('Location: index.php');
-
-
 	}
+  // si les 2 champs ne sont pas remplis
 	else{
 		echo '<br><h1>tous les champs ne sont pas remplis</h1>';
 	}

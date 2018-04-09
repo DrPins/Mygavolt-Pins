@@ -6,11 +6,12 @@ require_once('includes/functions_panier.php');
 require_once('includes/paypal.php');
 
 
-//var_dump($_SESSION['panier']);
 ?>
 <!--<a href="?deletepanier=true">Supprimer le panier</a>-->
 <?php
 $erreur = false;
+creationPanier();
+echo isset($_SESSION['panier']);
 // si il est existe $_POST['action'] alors $action = $_POST['action'] sinon si il existe $_GET['action'] alors il sera égal à $_GET['action']
 $action = (isset($_POST['action'])?$_POST['action']:(isset($_GET['action'])?$_GET['action']:null));
 
@@ -49,7 +50,9 @@ if (!$erreur){
 
 	switch ($action) {
 		case 'ajoutProd':
-		echo 'ajouter produit';
+		echo 'Produit ajouté <br>';
+
+
 
 		// Modifications Oral PPE
 			//1. si une session est ouvert
@@ -57,14 +60,15 @@ if (!$erreur){
 			//3. on serialize la variable
 			//4. update dans la table client du champ panier
 
-		ajouterProduit($i, $l, $p, $t, $q);
-
-		if(isset($_SESSION['user_id'])){
-
+ajouterProduit($i, $l, $p, $t, $q);
+		echo $i.' '.$l.' '.$q;
+		echo '<br>';
+		//var_dump($_SESSION['panier']);
 			if(isset($_SESSION['user_id'])){
 			$user_id    = $_SESSION['user_id'];
 			$panier_array = $_SESSION['panier'];
 			$panier_string = serialize($panier_array);
+			//$_SESSION['panier']['lock']=false;
 
 
 			$insert = $db->prepare("UPDATE clients SET panier = '$panier_string' WHERE id = '$user_id' ");
@@ -72,7 +76,7 @@ if (!$erreur){
 			$insert->execute();
 
 			}
-		}
+
 		break;
 
 		case 'supprimerProd':
@@ -126,6 +130,7 @@ if(isset($_GET['deletepanier']) && $_GET['deletepanier'] == true){
 
 // Si la varaible $_SESSION['panier'] n'existe pas, on va la créer et la fonction creation de panier va renvoyer true
 if(creationPanier()){
+
 	$nbProd = count($_SESSION['panier']['id_prod']);
 
 	// si le panier est vide
@@ -220,7 +225,7 @@ if(creationPanier()){
 												<a href="connect.php"><input type="button" value="Se connecter pour pouvoir passer une commande"/></a>
 											<?php
 											}?>
-											<a href="<?php //echo $paypal; ?>"><input type="button" value="Payer avec Paypal Sandbox *"/></a><br>
+										<!--	<a href="<?php //echo $paypal; ?>"><input type="button" value="Payer avec Paypal Sandbox *"/></a><br>-->
 									</td>
 									<td></td><td></td><td></td><td></td>
 

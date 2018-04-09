@@ -10,8 +10,8 @@ if(isset($_POST['submit'])){
 	$company = $_POST['inputCompany'];
 	$siret = $_POST['inputSIRET'];
 	$email = $_POST['inputEmail'];
-	$pwd = $_POST['inputPassword'];
-	$address1 = $_POST['inputAddress'];
+	$pwd = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT, ['cost' =>12]);
+  $address1 = $_POST['inputAddress'];
 	$address2 = $_POST['inputAddress2'];
 	$city = $_POST['inputCity'];
 	$zipcode = $_POST['inputZip'];

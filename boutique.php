@@ -38,7 +38,7 @@ if(isset($_GET['show'])){
 	$s = $select->fetch(PDO::FETCH_OBJ);
 
 	// récuprétaion en varaible d'id du  pourcentage de promo
-	$pourcentage_id = $s->promotion;
+	$pourcentage_id = $s->id_promotion;
 
 	// récupération de l'objet promo
 	$promo = $db->prepare("SELECT * FROM promotions where id = '$pourcentage_id'");

@@ -128,16 +128,14 @@ if(isset($_SESSION['user_id'])){
 		$select_client->execute();
 		$panier_svg = $select_client->fetch(PDO::FETCH_OBJ);
 		//2.
-		$panier = $panier_svg->panier; //unserialize
+		$panier_svg = $panier_svg->panier; //unserialize
 		//3.
-		$panier_svg_unserialize = unserialize($panier);
+		$panier_svg_unserialize = unserialize($panier_svg);
 		//4.
 		$_SESSION['panier'] = $panier_svg_unserialize;
 
 	}
-	else{
-		creationPanier();
-	}
+
 }
 
 // Suppresion du panier (session et en base si connecté)

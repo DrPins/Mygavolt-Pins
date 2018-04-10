@@ -34,25 +34,13 @@ require_once('includes/paypal.php');
 
 	$insert->execute();
 
-	unset($_SESSION['panier']);
-
-	$user_id    = $_SESSION['user_id'];
-	$panier = $_SESSION['panier'];
-
-	$insert = $db->prepare("UPDATE clients SET panier = :panier WHERE id = :user_id");
-
-	$insert->bindValue(':panier', null, PDO::PARAM_INT);
-	$insert->execute([':user_id' => $user_id]);
-
-	unset($_SESSION['panier']);
-
-
+	supprimePanier();
 
 	header('Location: success.php');
 
 
-	var_dump($products);
-	supprimePanier();
+
+
 //**********************************end***********************************************
 
 /*

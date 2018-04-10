@@ -10,7 +10,7 @@ require_once('includes/paypal.php');
 <!--<a href="?deletepanier=true">Supprimer le panier</a>-->
 <?php
 $erreur = false;
-creationPanier();
+//creationPanier();
 
 // si il est existe $_POST['action'] alors $action = $_POST['action'] sinon si il existe $_GET['action'] alors il sera égal à $_GET['action']
 $action = (isset($_POST['action'])?$_POST['action']:(isset($_GET['action'])?$_GET['action']:null));
@@ -50,9 +50,6 @@ if (!$erreur){
 
 	switch ($action) {
 		case 'ajoutProd':
-		echo 'Produit ajouté <br>';
-
-
 
 		// Modifications Oral PPE
 			//1. si une session est ouvert
@@ -61,14 +58,12 @@ if (!$erreur){
 			//4. update dans la table client du champ panier
 
 		ajouterProduit($i, $l, $p, $t, $q);
-		echo $i.' '.$l.' '.$q;
-		echo '<br>';
-		//var_dump($_SESSION['panier']);
+
 			if(isset($_SESSION['user_id'])){
 			$user_id    = $_SESSION['user_id'];
 			$panier_array = $_SESSION['panier'];
 			$panier_string = serialize($panier_array);
-			//$_SESSION['panier']['lock']=false;
+
 
 
 			$insert = $db->prepare("UPDATE clients SET panier = '$panier_string' WHERE id = '$user_id' ");
@@ -81,6 +76,11 @@ if (!$erreur){
 
 		case 'supprimerProd':
 			supprimerProd($i);
+
+
+
+
+
 			break;
 
 		case 'rafraichir':

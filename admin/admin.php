@@ -681,7 +681,7 @@ if(isset($_SESSION['username'])){
 }
 }
 else{
-	header('Location: ../index.php');
+	header('Location: admin/index.php');
 }
 
 ?>

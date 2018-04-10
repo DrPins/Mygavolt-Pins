@@ -9,7 +9,7 @@ session_start();
             ));
 
         }catch(PDOException $e){
-            die('<h1>Impossible de se connecter porut</h1>');
+            die('<h1>Impossible de se connecter</h1>');
         }
 
 /*

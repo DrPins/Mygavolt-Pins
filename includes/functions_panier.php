@@ -5,14 +5,15 @@
 	function creationPanier(){
 
 		try{
-            $db = new PDO('mysql:host=127.0.0.1;dbname=mygavolt', 'root','root',array(
+            $db = new PDO('sqlsrv:Server=wserver.area42.fr;Database=mygavoltpins', 'mygavolt', 'k2Y*bswsaFyss3j7*Hsf',array(
                 PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8',
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
             ));
 
         }catch(PDOException $e){
-            die('<h1>Une erreur est survenue</h1>');
+            die('<h1>Impossible de se connecter porut</h1>');
         }
+
 
 		if(!isset($_SESSION['panier'])){
 
@@ -30,12 +31,19 @@
 
 	function ajouterProduit($id_prod, $lib_prod, $price_prod, $tva_prod, $qte_prod){
 
+		unset($_SESSION['panier']);
 
-
-		echo creationPanier();
+		//echo creationPanier();
 		if(creationPanier() && !isVerrouille()){
+			//$_SESSION['panier']['id_prod'] = "";
+		//	echo '$_SESSION["panier"]["id_prod"] : <pre>';
+		//	var_dump($_SESSION['panier']['id_prod']);
+		//	echo '</pre>';
 
+			//$_SESSION['panier'] = unserialize(str)
 			$position_produit = array_search($id_prod, $_SESSION['panier']['id_prod']);
+
+			//echo '<br> position produit : '.$position_produit;
 
 			if($position_produit !== false){
 				// si le produit a déjà été ajouté, on incremente la quantité
@@ -44,7 +52,7 @@
 			}
 			else
 			{
-					echo 'test';
+					//echo 'test';
 				array_push($_SESSION['panier']['id_prod'],    $id_prod);
 				array_push($_SESSION['panier']['lib_prod'],   $lib_prod);
 				array_push($_SESSION['panier']['price_prod'], $price_prod);
@@ -57,6 +65,10 @@
 		else {
 			echo "Erreur, Contactez l'administrateur";
 		}
+
+		//echo '$_SESSION["panier"]["id_prod"] : <pre>';
+		//	var_dump($_SESSION['panier']['id_prod']);
+		//	echo '</pre>';
 	}
 
 
@@ -72,7 +84,8 @@
 
 				if($position_produit !== false){
 					$_SESSION['panier']['qte_prod'][$position_produit] = $qte_prod;
-				}
+
+					}
 
 			}
 			else{
@@ -163,15 +176,15 @@
 		//1. si une session est ouverte
 		//4. update dans la table client du champ panier à vide
 
-    try{
-    $db = new PDO('mysql:host=127.0.0.1;dbname=mygavolt', 'root','root',array(
-        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8',
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
-    ));
-	  }
-    catch(PDOException $e){
-        die('<h1>Impossible de se connecter</h1>');
-    }
+   try{
+            $db = new PDO('sqlsrv:Server=wserver.area42.fr;Database=mygavoltpins', 'mygavolt', 'k2Y*bswsaFyss3j7*Hsf',array(
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8',
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
+            ));
+
+        }catch(PDOException $e){
+            die('<h1>Impossible de se connecter porut</h1>');
+        }
 
   	$_SESSION['panier']=array();
 		$_SESSION['panier']['id_prod']=array();
@@ -209,8 +222,6 @@
 	}
 
 	function isVerrouille(){
-
-		//$_SESSION['panier']['lock']=false;
 
 
 		if (isset($_SESSION['panier']) && $_SESSION['panier']['lock']) {

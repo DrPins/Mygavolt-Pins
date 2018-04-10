@@ -11,7 +11,7 @@ require_once('includes/paypal.php');
 <?php
 $erreur = false;
 creationPanier();
-echo isset($_SESSION['panier']);
+
 // si il est existe $_POST['action'] alors $action = $_POST['action'] sinon si il existe $_GET['action'] alors il sera égal à $_GET['action']
 $action = (isset($_POST['action'])?$_POST['action']:(isset($_GET['action'])?$_GET['action']:null));
 
@@ -56,11 +56,11 @@ if (!$erreur){
 
 		// Modifications Oral PPE
 			//1. si une session est ouvert
-			//2. on stock dans une variable la seesion panier
+			//2. on stock dans une variable la session panier
 			//3. on serialize la variable
 			//4. update dans la table client du champ panier
 
-ajouterProduit($i, $l, $p, $t, $q);
+		ajouterProduit($i, $l, $p, $t, $q);
 		echo $i.' '.$l.' '.$q;
 		echo '<br>';
 		//var_dump($_SESSION['panier']);
@@ -88,6 +88,20 @@ ajouterProduit($i, $l, $p, $t, $q);
 
 				// le round est là pour être sur qu'il n'y ait pas une quantité à virgule
 				modifierQteProd($_SESSION['panier']['id_prod'][$i], round($qteArt[$i]));
+
+				if(isset($_SESSION['user_id'])){
+			$user_id    = $_SESSION['user_id'];
+			$panier_array = $_SESSION['panier'];
+			$panier_string = serialize($panier_array);
+			//$_SESSION['panier']['lock']=false;
+
+
+			$insert = $db->prepare("UPDATE clients SET panier = '$panier_string' WHERE id = '$user_id' ");
+
+			$insert->execute();
+
+			}
+
 			}
 
 			break;
@@ -107,19 +121,23 @@ ajouterProduit($i, $l, $p, $t, $q);
 
 if(isset($_SESSION['user_id'])){
 
-	$user_id = $_SESSION['user_id'];
-	//1.
-	$select_client = $db->prepare("SELECT * FROM clients where id = '$user_id'");
-	$select_client->execute();
-	$panier_svg = $select_client->fetch(PDO::FETCH_OBJ);
-	//2.
-	$panier_svg = $panier_svg->panier; //unserialize
-	//3.
-	$panier_svg_unserialize = unserialize($panier_svg);
-	//4.
-	$_SESSION['panier'] = $panier_svg_unserialize;
+	if(isset($_SESSION['panier'])){
+		$user_id = $_SESSION['user_id'];
+		//1.
+		$select_client = $db->prepare("SELECT * FROM clients where id = '$user_id'");
+		$select_client->execute();
+		$panier_svg = $select_client->fetch(PDO::FETCH_OBJ);
+		//2.
+		$panier_svg = $panier_svg->panier; //unserialize
+		//3.
+		$panier_svg_unserialize = unserialize($panier_svg);
+		//4.
+		$_SESSION['panier'] = $panier_svg_unserialize;
 
-
+	}
+	else{
+		creationPanier();
+	}
 }
 
 // Suppresion du panier (session et en base si connecté)

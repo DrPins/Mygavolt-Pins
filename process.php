@@ -17,7 +17,7 @@ require_once('includes/paypal.php');
 	$date_achat = date("Ymd");
 	$user_id = $_SESSION['user_id'];
 
-	for ($i=0; $i < count($_SESSION['panier']['lib_prod']); $i++) { 
+	for ($i=0; $i < count($_SESSION['panier']['lib_prod']); $i++) {
 		//va rajouter à l'array product l'id du produit
 		$products.=$_SESSION['panier']['id_prod'][$i];
 		if($i<=1){
@@ -34,12 +34,17 @@ require_once('includes/paypal.php');
 
 	$insert->execute();
 
+
+
+unset($_SESSION['panier']);
+
+
 	header('Location: success.php');
 
-	
+
 	var_dump($products);
 	supprimePanier();
-//**********************************end*********************************************** 	
+//**********************************end***********************************************
 
 /*
 
@@ -78,7 +83,7 @@ if($response){
 
 	$products = '';
 
-	for ($i=0; $i < count($_SESSION['panier']['lib_prod']); $i++) { 
+	for ($i=0; $i < count($_SESSION['panier']['lib_prod']); $i++) {
 		//va rajouter à l'array product l'id du produit
 		$products.=$_SESSION['panier']['id_prod'][$i];
 		if(count($_SESSION['panier']['lib_prod'])>1){

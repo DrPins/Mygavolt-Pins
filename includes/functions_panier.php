@@ -202,9 +202,9 @@
 				$user_id    = $_SESSION['user_id'];
 				$panier = $_SESSION['panier'];
 				echo $user_id;
-			$insert = $db->prepare("UPDATE clients SET panier = 'NULL' WHERE id = '$user_id' ");
+			$insert = $db->prepare("UPDATE clients SET panier = NULL WHERE id = :user_id");
 
-			$insert->execute();
+			$insert->execute([':user_id' => $user_id]);
 
 			}
 		}

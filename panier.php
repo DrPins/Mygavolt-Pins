@@ -58,6 +58,9 @@ if (!$erreur){
 			//4. update dans la table client du champ panier
 
 		ajouterProduit($i, $l, $p, $t, $q);
+			//echo "<pre>";
+			//var_dump($_SESSION['panier']);
+			//echo "</pre>";
 
 			if(isset($_SESSION['user_id'])){
 			$user_id    = $_SESSION['user_id'];

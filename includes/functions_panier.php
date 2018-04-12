@@ -49,6 +49,7 @@
 				// si le produit a déjà été ajouté, on incremente la quantité
 				$_SESSION['panier']['qte_prod'][$position_produit] += $qte_prod;
 
+
 			}
 			else
 			{

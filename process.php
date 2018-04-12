@@ -23,6 +23,19 @@ require_once('includes/paypal.php');
 		if($i<=1){
 			$products.=', ';
 		}
+
+		// on va défalquer le stock acheté
+		$id_prod=$_SESSION['panier']['id_prod'][$i];
+		$qte_prod = $_SESSION['panier']['qte_prod'][$i];
+
+		echo $id_prod.'   '.$qte_prod;
+
+		$update = $db->prepare("UPDATE products set stock = stock - :qte_prod where id = :id_prod");
+		$update->execute([':qte_prod'=>$qte_prod, ':id_prod'=>$id_prod]);
+
+
+
+
 	}
 	//a la sortie du for, la variables products va contenir tous les produits
 

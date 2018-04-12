@@ -1,43 +1,11 @@
 
-<style type="text/css">
-
-body{
-      background-color: #2387a8;
-      color: white;
-      padding: 40px;
-}
-
-a{
-      color: black;
-}
-
-</style>
 
 <?php
-session_start();
-$timestamp   = time();
 
-        try{
-            $db = new PDO('sqlsrv:Server=wserver.area42.fr;Database=mygavoltpins', 'mygavolt', 'k2Y*bswsaFyss3j7*Hsf',array(
-                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8',
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
-            ));
-
-        }catch(PDOException $e){
-            die('<h1>Impossible de se connecter</h1>');
-        }?>
+require_once('header.php');?>
 
 
-	      <!-- Librairie bootstrap + jquery -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	  <link rel="stylesheet" type="text/css" href="style/style.css">
-
-
-<body>
-<h1>Mygavolt Admin Panel</h1>
-<h4> User : <?php echo $_SESSION['username'] ?></h4>
+<h4> Utilisateur : <?php echo $_SESSION['username'] ?></h4>
 <?php
 // vérification qu'on a bien rentré un username
 if(isset($_SESSION['username'])){

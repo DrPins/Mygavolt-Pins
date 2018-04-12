@@ -97,7 +97,7 @@ if(isset($_SESSION['username'])){
 
         <form action="" method="POST">
 
-          <h3>Nom catégorie :</h3><input type="text" name="label" value="<?php echo $categorie->label; ?>">
+          <h3>Nom catégorie :</h3><input class="form-control" type="text" name="label" value="<?php echo $categorie->label; ?>">
           <input type="submit" name="submit" value = "Modifier">
 
         </form>

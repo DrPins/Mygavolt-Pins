@@ -110,7 +110,7 @@ if(isset($_SESSION['username'])){
       <h3>Description    : </h3><textarea class="form-control"  name="description"></textarea>
       <h3>Prix HT        : </h3><input type="text" class="form-control"  name="price">
       <h3>Taux TVA      : </h3><input type="text" name="tva" class="form-control"  value="19.6">
-      <h3>Promotion      : </h3><select class="custom-select" name="promotion">
+      <h3>Promotion      : </h3><select class="form-control" name="promotion">
         <?php
           $select=$db->query("SELECT * FROM promotions ORDER BY label");
           while ($s = $select->fetch(PDO::FETCH_OBJ)) {?>
@@ -119,7 +119,7 @@ if(isset($_SESSION['username'])){
             <?php
           }
         ?></select>
-      <h3>Catégorie      : </h3><select class="custom-select" name="category">
+      <h3>Catégorie      : </h3><select class="form-control" name="category">
         <?php
           $select=$db->query("SELECT * FROM categories ORDER BY label");
           while ($s = $select->fetch(PDO::FETCH_OBJ)) {?>
@@ -132,7 +132,7 @@ if(isset($_SESSION['username'])){
       </select>
       <h3>Photo          : </h3><input type="file" name="img" class="custom-file-input">
 
-      <input type="submit" name="submit">
+      <input type="submit" name="submit" class="btn btn-warning" role="button">
 
     </form>
 
@@ -226,11 +226,11 @@ if(isset($_SESSION['username'])){
         $cat_label = $cat_label->label;
         ?>
 
-      <h3>Nom du produit : </h3><input type="text" name="label" value="<?php echo $produit->label; ?>">
-      <h3>Description    : </h3><textarea name="description" ><?php echo $produit->description; ?></textarea>
-      <h3>Prix HT        : </h3><input type="text" name="price" value="<?php echo $produit->price; ?>">
-      <h3>Taux TVA       : </h3><input type="text" name="tva" value="<?php echo $produit->tva; ?>">
-      <h3>Promotion      : </h3><select name="promotion" >
+      <h3>Nom du produit : </h3><input class="form-control" type="text" name="label" value="<?php echo $produit->label; ?>">
+      <h3>Description    : </h3><textarea class="form-control" name="description" ><?php echo $produit->description; ?></textarea>
+      <h3>Prix HT        : </h3><input class="form-control" type="text" name="price" value="<?php echo $produit->price; ?>">
+      <h3>Taux TVA       : </h3><input class="form-control" type="text" name="tva" value="<?php echo $produit->tva; ?>">
+      <h3>Promotion      : </h3><select name="promotion" class="form-control">
         <?php
           $select=$db->query("SELECT * FROM promotions");
           while ($s = $select->fetch(PDO::FETCH_OBJ)) {
@@ -248,7 +248,7 @@ if(isset($_SESSION['username'])){
 
           }
         ?></select>
-      <h3>Catégorie      : </h3><select name="category">
+      <h3>Catégorie      : </h3><select name="category" class="form-control">
         <?php
           $select=$db->query("SELECT * FROM categories");
           while ($s = $select->fetch(PDO::FETCH_OBJ)) {
@@ -268,7 +268,7 @@ if(isset($_SESSION['username'])){
       </select>
       <h3>Photo          : </h3><input type="file" name="img" value="<?php echo 'imgs/'.$produit->nom_img.'.jpg'; ?>">
 
-      <input type="submit" name="submit" value = "Modifier">
+      <input type="submit" name="submit" value = "Modifier" class="btn btn-warning" role="button">
 
     </form>
     <?php
@@ -389,7 +389,7 @@ if(isset($_SESSION['username'])){
         <form action="" method="POST">
 
           <h3>Stock :</h3><input type="text" name="stock" value="<?php echo $prod->stock; ?>">
-          <input type="submit" name="submit" value = "Modifier stock">
+          <input type="submit" name="submit" value = "Modifier stock" class="btn btn-warning" role="button">
 
         </form>
     <?php

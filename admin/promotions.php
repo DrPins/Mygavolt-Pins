@@ -34,7 +34,7 @@ if(isset($_SESSION['username'])){
     <h2>Ajout d'une promotion</h2>
     <form action="" method="post">
     <h3>Pourcentage de réduction :</h3><input type="text" name="label">
-    <input type="submit" name="submit" value="Ajouter">
+    <input type="submit" name="submit" value="Ajouter" class="btn btn-warning" role="button">
     </form>
 
     <?php
@@ -98,8 +98,8 @@ if(isset($_SESSION['username'])){
 ?>
         <form action="" method="POST">
 
-          <h3>Pourcentage promotion :</h3><input type="text" name="label" value="<?php echo $promo->label; ?>">
-          <input type="submit" name="submit" value = "Modifier">
+          <h3>Pourcentage promotion :</h3><input class="form-control" type="text" name="label" value="<?php echo $promo->label; ?>">
+          <input type="submit" name="submit" value = "Modifier" class="btn btn-warning" role="button">
 
         </form>
     <?php

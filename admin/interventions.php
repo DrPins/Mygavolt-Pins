@@ -23,6 +23,7 @@ if(isset($_SESSION['username'])){
       $employe     = $_POST['employe'];
       $client      = $_POST['client'];
       $date_inter  = $_POST['date_inter'];
+      $heure       = $_POST['hour'];
       $motif       = $_POST['motive'];
 
 
@@ -31,7 +32,7 @@ if(isset($_SESSION['username'])){
       //************************************************************CREATION************************************************************
 
       // on vérifie que toutes les informations ont bien été renseignées
-      if($employe&&$client&&$motif&&$date_inter){
+      if($employe&&$client&&$motif&&$date_inter&&$heure){
         //permet de récupérer l'id de l'employé, du client puis du motif afin de pouvoir alimenter la base
         $select_emp = $db->prepare("SELECT * FROM employees where lastname = '$employe'");
         $select_emp->execute();
@@ -49,7 +50,7 @@ if(isset($_SESSION['username'])){
         $motif_id = $motif_id->id;
 
 
-        $insert = $db->prepare("INSERT INTO interventions (id_employee, id_client, date_inter, id_motive) VALUES ('$emp_id', '$client_id', '$date_inter', '$motif_id')");
+        $insert = $db->prepare("INSERT INTO interventions (id_employee, id_client, date_inter, id_motive, time_inter) VALUES ('$emp_id', '$client_id',  '$date_inter', '$motif_id', '$heure')");
         $insert->execute();
 
       }
@@ -90,6 +91,7 @@ if(isset($_SESSION['username'])){
           }
           ?></select>
       <h3>Date     : </h3><input type="date" name="date_inter" class="form-control" >
+      <h3>Heure     : </h3><input type="time" name="hour" class="form-control" >
 
 
       <br>
@@ -254,7 +256,8 @@ if(isset($_SESSION['username'])){
             }
           }
           ?></select>
-      <h3>Date     : </h3><input type="date" name="date_inter" class="form-control" value=<?php echo $intervention->date_inter ?>>
+      <h3>Date     : </h3><input type="datetime" name="date_inter" class="form-control" value=<?php echo $intervention->date_inter ?>>
+
 
 
       <br>

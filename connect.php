@@ -5,7 +5,6 @@ require_once('includes/header.php');
 if(!isset($_SESSION['user_id'])){
 
 
-
 if(isset($_POST['submit'])){
 
   // récupération de la saisie mail et pwd
@@ -23,12 +22,14 @@ if(isset($_POST['submit'])){
 			$result = $select->fetch(PDO::FETCH_OBJ);
         // on vérifie que le mot de passe encrypté en base correspond bien à celui soumis
         if (password_verify($pwdSubmitted, $result->pwd )){
+
   			$_SESSION['user_id'] = $result->id;
+        echo $_SESSION['user_id'];
   			$_SESSION['user_firstname'] = $result->firstname;
   			$_SESSION['user_email'] = $result->email;
   			//$_SESSION['user_pw'] = $result->pwd;
+        header('Location:myaccount.php');
         }
-
 		}
 		else{
 			echo '<h2>L\'identifiant n\'existe pas ou le mot de passe est incorect </h2>';
@@ -41,32 +42,32 @@ if(isset($_POST['submit'])){
 	}
 }
 
-?>
+  ?>
 
-<h2>Se connecter</h2>
+  <h2>Se connecter</h2>
 
-<form action="" method="POST" class="form_inscription">
+  <form action="" method="POST" class="form_inscription">
 
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail">Email</label>
-      <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="inputEmail">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail">Email</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="inputEmail">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="inputPassword">
+      </div>
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword">Password</label>
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="inputPassword">
-    </div>
-  </div>
 
 
-  <button type="submit" class="btn btn-primary" name="submit">Se connecter</button>
-</form>
+    <button type="submit" class="btn btn-primary" name="submit">Se connecter</button>
+  </form>
 
-<a href="register.php">Pas encore de compte ?
-</a>
+  <a href="register.php">Pas encore de compte ?
+  </a>
 
 
-<?php
+  <?php
 }
 else{
 	header('Location:myaccount.php');

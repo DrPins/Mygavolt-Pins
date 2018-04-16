@@ -1,6 +1,6 @@
-      
+
 <style type="text/css">
-      
+
 body{
       background-color: #2387a8;
       color: white;
@@ -15,16 +15,16 @@ a{
       <?php
       	session_start();
 
-      	$user = 'Toto';
-      	$pw = 'Pins';
+      	$user = 'Admin';
+      	$pw = 'Admin';
       	if(isset($_POST['submit'])){
       		$username =  $_POST['username'];
       		$password =  $_POST['password'];
 
       		if($username&&$password){
-      			
+
       			if($username == $user && $password == $pw){
-      				
+
 
       				$_SESSION['username'] = $username;
       				header('Location: admin.php');

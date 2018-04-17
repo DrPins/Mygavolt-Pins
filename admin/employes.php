@@ -11,6 +11,8 @@ require_once('header.php');?>
 
 <?php
 
+echo $_POST['submit'];
+
 // vérification qu'on a bien rentré un username
 if(isset($_SESSION['username'])){
   // vérification si il y a un code action
@@ -201,14 +203,10 @@ if(isset($_SESSION['username'])){
         $employee = $select->fetch(PDO::FETCH_OBJ);
 
         // on affiche ces données dans les champs
+      ?>
 
 
-
-
-?>
-
-
-            <form action="" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
 
       <h4>Nom :                          </h4><input type="text" class="form-control"  name="lastname"       value="<?php echo $employee->lastname; ?>">
       <h4>Prénom :                       </h4><input type="text" class="form-control"  name="firstname"      value="<?php echo $employee->firstname; ?>">
@@ -237,11 +235,10 @@ if(isset($_SESSION['username'])){
         <?php
       }?>
 
+      <input type="submit" name="submit" class="btn btn
 
       <h4>Photo          : </h4><input type="file" name="img" class="custom-file-input"><br>
-
-      <input type="submit" name="submit" class="btn btn-warning" role="button">
-prout
+-warning" role="button">
     </form>
 
     <?php
@@ -272,15 +269,15 @@ prout
 
         // Si il y a une image, on la reformate et on l'enregistre
         if(!empty($img_tmp)){
-        $img= explode('.', $img);
-        $image_ext= end($img);
+          $img= explode('.', $img);
+          $image_ext= end($img);
 
 
-        if(in_array(strtolower($image_ext), array('png', 'jpg', 'jpeg'))===false){
-          //on vérifie que le fichier à la bonne extension
-          echo "Veuillez rentrer une image ayant pour extension : png, jpg ou jpeg";
-        }
-        else{
+          if(in_array(strtolower($image_ext), array('png', 'jpg', 'jpeg'))===false){
+            //on vérifie que le fichier à la bonne extension
+            echo "Veuillez rentrer une image ayant pour extension : png, jpg ou jpeg";
+          }
+          else{
           // on con
           $image_size=getimagesize($img_tmp);
           if($image_size['mime']=='image/jpeg'){

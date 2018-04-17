@@ -54,7 +54,7 @@ session_start();
       <?php
       if(!isset($_SESSION['user_id'])){
         ?><li><a href="register.php">Inscription</a></li>
-         <li><a href="connect.php">Connection</a></li><?php
+         <li><a href="connect.php">Connexion</a></li><?php
       }
       else{
         ?>

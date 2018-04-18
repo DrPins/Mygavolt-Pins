@@ -55,13 +55,13 @@ if(isset($_SESSION['username'])){
           }
 
           if ($image_src!==false){
-            $image_width=200;
+            $image_width=300;
             if($image_size[0]==$image_width){
               $image_finale = $image_src;
             }
             else{
               $new_width[0] = $image_width;
-              $new_height[1] = 200 ;
+              $new_height[1] = 300 ;
               $image_finale = imagecreatetruecolor($new_width[0], $new_height[1]);
 
               imagecopyresampled($image_finale, $image_src, 0, 0, 0, 0, $new_width[0], $new_height[1], $image_size[0], $image_size[1]);
@@ -312,13 +312,13 @@ if(isset($_SESSION['username'])){
           }
 
           if ($image_src!==false){
-            $image_width=200;
+            $image_width=300;
             if($image_size[0]==$image_width){
               $image_finale = $image_src;
             }
             else{
               $new_width[0] = $image_width;
-              $new_height[1] = 200 ;
+              $new_height[1] = 300 ;
               $image_finale = imagecreatetruecolor($new_width[0], $new_height[1]);
 
               imagecopyresampled($image_finale, $image_src, 0, 0, 0, 0, $new_width[0], $new_height[1], $image_size[0], $image_size[1]);

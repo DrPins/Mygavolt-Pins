@@ -106,7 +106,10 @@ if (creationPanier()) {
     $nbProd = count($_SESSION['panier']['id_prod']);
     // si le panier est vide
     if ($nbProd <= 0) {
+        ?>
+        <div class="empty_cart"><?php
         echo 'Votre panier est vide';
+        ?></div><?php
     }
     // si il y a des produits dans le panier
     else {
@@ -183,7 +186,7 @@ if (creationPanier()) {
 											<?php if (isset($_SESSION['user_id'])) {
             ?><a href="process.php"><input type="button" value="Valider la commande"/></a><?php
 } else {?>
-												<a href="connect.php"><input type="button" value="Se connecter pour pouvoir passer une commande"/></a>
+												<a href="connect.php"><button type="submit" class="btn btn-dark" value="se connecter">Se connecter pour passer commande</button></a>
 											<?php
 }?>
 										<!--	<a href="<?php //echo $paypal; ?>"><input type="button" value="Payer avec Paypal Sandbox *"/></a><br>-->
@@ -195,9 +198,9 @@ if (creationPanier()) {
 
 								<tr>
 									<td colspan="4">
-										<input type="submit" value="rafraichir"/>
-										<input type="hidden" name="action" value="rafraichir"/>
-										<a href="?deletepanier=true"><input type="button" value="Supprimer le panier"/></a>
+										<button type="submit" class="btn btn-dark" value="rafraichir">Rafraichir les quantités</button>
+
+										<a href="?deletepanier=true"><button type="submit" class="btn btn-dark" value="Supprimer">Supprimer le panier</button></a>
 
 
 									</td>
@@ -223,6 +226,6 @@ if (creationPanier()) {
 
 
 <?php
-require_once 'includes/sidebar.php';
+//require_once 'includes/sidebar.php';
 require_once 'includes/footer.php';
 ?>

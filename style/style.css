@@ -30,7 +30,9 @@ footer{
 }
 
 body{
-	background-color: #2387a8;
+	background-color: #839788;
+	padding-top: 70px;
+	padding-bottom: 70px
 
 }
 
@@ -38,7 +40,17 @@ body{
 	width: 80%;
 }
 
-
+.empty_cart{
+	margin: 15vw;
+	margin-top: 10vh;
+	background-color: #EEE0CB;
+	padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+}
 
 .promotion_couleur{
 	color: red;
@@ -62,3 +74,21 @@ a{
     float: none;
     vertical-align: top;
 }
+
+.produit-box{
+	margin-left: 10vw;
+	margin-right: 10vw;
+	padding: 3vw;
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+	margin-bottom: 15vh;
+}
+
+.thumbnail{
+
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	padding: 10px;
+
+}
+

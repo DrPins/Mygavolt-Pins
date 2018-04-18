@@ -42,13 +42,13 @@ session_start();
 	<title></title>
 </head>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand">MYGAVOLT</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="index.php">Home</a></li>
+      <li ><a href="index.php">Home</a></li>
       <li><a href="boutique.php">Produits</a></li>
       <li><a href="panier.php">Panier</a></li>
       <?php

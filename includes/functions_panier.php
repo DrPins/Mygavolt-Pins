@@ -22,7 +22,7 @@ function creationPanier()
 }
 function ajouterProduit($id_prod, $lib_prod, $price_prod, $tva_prod, $qte_prod)
 {
-    unset($_SESSION['panier']);
+    //unset($_SESSION['panier']);
     //echo creationPanier();
     if (creationPanier() && !isVerrouille()) {
         //$_SESSION['panier']['id_prod'] = "";
@@ -71,7 +71,7 @@ function modifierQteProd($id_prod, $qte_prod)
 }
 function supprimerProd($id_prod)
 {
-    echo "supprimer article<br>";
+    //echo "supprimer article<br>";
     if (creationPanier() && !isVerrouille()) {
         // Si le panier est bien créé, on crée un array temporaire où mettre la liste de produit sans celui que l'on veut supprimer
         $tmp = array();
@@ -92,7 +92,7 @@ function supprimerProd($id_prod)
                 array_push($tmp['qte_prod'], $_SESSION['panier']['qte_prod'][$i]);
             }
         }
-        var_dump($tmp);
+       // var_dump($tmp);
         // on copie le panier temporaire dans le nouveau panier
         $_SESSION['panier'] = $tmp;
         // on efface le panier temporaire

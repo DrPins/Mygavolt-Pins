@@ -147,7 +147,7 @@ if (creationPanier()) {
 
 		<h2>Votre Panier</h2>
 
-
+        <div class="full_cart">
 		<form method="post" action="">
 			<table class="table" >
 
@@ -211,7 +211,8 @@ if (creationPanier()) {
 					</table>
 
 
-				</form><?php
+				</form>
+                </div><?php
     }
 }
 ?>

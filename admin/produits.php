@@ -148,6 +148,7 @@ if(isset($_SESSION['username'])){
         $select = $db->prepare("SELECT * FROM products");
         $select->execute();
         ?>
+        <div class="full_cart">
         <table class="table">
           <tr>
                 <th>Nom</th>
@@ -189,7 +190,8 @@ if(isset($_SESSION['username'])){
 
         }
 
-        ?></table><?php
+        ?></table>
+        </div><?php
 
   }
   //************************************************************MODIFICATION************************************************************

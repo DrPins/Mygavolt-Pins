@@ -176,7 +176,7 @@ if(isset($_SESSION['username'])){
         ?>
           <tr>
             <td><?php echo $s->label;?></td>
-            <td><?php echo $s->price;?></td>
+            <td><?php echo number_format($s->price, 2, '.', ' ');?></td>
             <td><?php echo $cat_label;?></td>
             <td><?php echo $promo_label;?></td>
             <td><a href="?action=modstock&amp;id=<?php echo $s->id; ?>"><?php echo $s->stock;?></a></td>

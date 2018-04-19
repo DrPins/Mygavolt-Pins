@@ -30,7 +30,7 @@ footer{
 }
 
 body{
-	background-color: #839788;
+	background-color: #63B995;
 	padding-top: 70px;
 	padding-bottom: 70px
 
@@ -41,6 +41,18 @@ body{
 }
 
 .empty_cart{
+	margin: 15vw;
+	margin-top: 10vh;
+	background-color: #EEE0CB;
+	padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+}
+
+.admin_home{
 	margin: 15vw;
 	margin-top: 10vh;
 	background-color: #EEE0CB;
@@ -92,3 +104,16 @@ a{
 
 }
 
+.formulaire_admin_index{
+	margin-left: 20vw;
+	margin-right: 20vw;
+	margin-top: 10vh;
+	background-color: #ADEEE3;
+	padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+
+}

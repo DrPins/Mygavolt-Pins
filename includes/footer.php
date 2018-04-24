@@ -17,7 +17,7 @@
                   <div class="col-md-6">
                       <h5 class="text-uppercase">Links</h5>
                       <ul class="list-unstyled">
-                          <li><a href="#!">Conditions générales de vente</a></li>
+                          <li><a href="cgv.php">Conditions générales de vente</a></li>
                           <li><a href="#!">Link 2</a></li>
                           <li><a href="#!">Link 3</a></li>
                           <li><a href="#!">Link 4</a></li>

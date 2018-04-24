@@ -13,15 +13,15 @@ footer{
   -webkit-border-radius: 8;
   -moz-border-radius: 8;
   border-radius: 8px;
-  color: #000000;
-  font-size: 20px;
-  background: #FEF6C9;
+  color: #ffffff;
+  font-size: 15px;
+  background: #725752;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
 }
 
 .btn1:hover {
-  background: #AEC3B0;
+  background: #878E88;
   text-decoration: none;
 }
 
@@ -52,8 +52,12 @@ body{
 
 }
 
+.form_connexion{
+	width: 100%;
+}
+
 .form_inscription{
-	width: 80%;
+	width: 100%;
 }
 
 .empty_cart{
@@ -87,6 +91,17 @@ body{
 	border-radius: 10px;
 	font-weight: bold;
 	font-size: 20px;
+	text-align: center;
+}
+
+.index_home{
+	margin: 15vw;
+	margin-top: 10vh;
+	background-color: #eaeaea;
+	padding: 20px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 10px;
+	font-size: 15px;
 	text-align: center;
 }
 

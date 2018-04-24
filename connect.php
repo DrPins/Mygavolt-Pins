@@ -43,29 +43,29 @@ if(isset($_POST['submit'])){
 }
 
   ?>
-
+<div class="index_home">
   <h2>Se connecter</h2>
 
-  <form action="" method="POST" class="form_inscription">
+  <form action="" method="POST" class="form_connexion">
 
-    <div class="form-row">
-      <div class="form-group col-md-6">
+    <div class="form-row" >
+      <div class="form-group ">
         <label for="inputEmail">Email</label>
         <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="inputEmail">
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group ">
         <label for="inputPassword">Password</label>
         <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="inputPassword">
       </div>
     </div>
 
 
-    <button type="submit" class="btn btn-primary" name="submit">Se connecter</button>
+    <button type="submit" class="btn1" name="submit">Se connecter</button>
   </form>
 
   <a href="register.php">Pas encore de compte ?
   </a>
-
+</div>
 
   <?php
 }

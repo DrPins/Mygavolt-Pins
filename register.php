@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
 
 ?>
 
-
+<div class="index_home">
 <form action="" method="POST" class="form_inscription">
 	<div class="form-row">
     <div class="form-group col-md-6">
@@ -89,9 +89,9 @@ if(isset($_POST['submit'])){
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary" name="submit">S'inscrire</button>
+  <button type="submit" class="btn1" name="submit">S'inscrire</button>
 </form>
-
+</div>
 <?php
 
 }

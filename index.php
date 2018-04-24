@@ -2,20 +2,20 @@
 
 require_once('includes/header.php');?>
 
-<div style="padding: 35px">
+<div class="index_home">
 
-<h4>Horaires ouverture :</h4>
-<p>- lundi au vendredi : 9h - 18h</p>
-<p>- samedi : 9h - 20h</p>
-<p>- dimanche et jours fériés : fermé</p>
+<h3>Horaires ouverture :</h3>
+<ul>- lundi au vendredi : 9h - 18h</ul>
+<ul>- samedi : 9h - 20h</ul>
+<ul>- dimanche et jours fériés : fermé</ul>
 
 
-</div>
+
 
 
 <iframe src="https://snazzymaps.com/embed/55199" width="500px" height="300px" style="border:none; margin-left: 35px;"></iframe>
 
-<div style="padding: 35px">
+
 
 <h4>Contact :</h4>
 <p>contact@mygavolt.com</p>

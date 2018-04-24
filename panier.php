@@ -199,12 +199,7 @@ if (creationPanier()) {
 											<p>Total TTC :<?php echo $totalTTC; ?> € </p><br>
 											<br>
 
-											<?php if (isset($_SESSION['user_id'])) {
-            ?><a href="process.php"><input type="button" value="Valider la commande"/></a><?php
-} else {?>
-												<a href="connect.php"><button type="submit" class="btn btn-dark" value="se connecter">Se connecter pour passer commande</button></a>
-											<?php
-}?>
+
 										<!--	<a href="<?php //echo $paypal; ?>"><input type="button" value="Payer avec Paypal Sandbox *"/></a><br>-->
 									</td>
 									<td></td><td></td><td></td><td></td>
@@ -213,10 +208,19 @@ if (creationPanier()) {
 								</tr>
 
 								<tr>
-									<td colspan="4">
-										<input class="btn1" type="submit" value="rafraichir" name="action" />
+									<td colspan="6">
+                                        <?php
+                                        if (isset($_SESSION['user_id'])) {
+                                        ?><a href="process.php"><input type="button" value="Valider la commande"/></a><?php
+                                        }
+                                        else {?>
+                                            <a  href="connect.php"><input class="btn1"  type="button" value="Se connecter pour passer commande"/></a>
+                                                                        <?php
+                                        }?>
 
-                                        <a class="btn1" href="?deletepanier=true" >Supprimer panier</a>
+										<input class="btn1" type="submit" value="Rafraichir" name="action" style="font-weight: bold;" />
+
+                                        <a href="?deletepanier=true" ><input class="btn1"  type="button" value="Supprimer panier"/></a>
 
 
 

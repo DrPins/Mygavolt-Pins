@@ -57,6 +57,17 @@ if (!$erreur) {
             break;
         case 'supprimerProd':
             supprimerProd($i);
+
+            if (isset($_SESSION['user_id'])) {
+                $user_id = $_SESSION['user_id'];
+                $panier_array = $_SESSION['panier'];
+                $panier_string = serialize($panier_array);
+                //$_SESSION['panier']['lock']=false;
+                $insert = $db->prepare("UPDATE clients SET panier = '$panier_string' WHERE id = '$user_id' ");
+                $insert->execute();
+            }
+
+
             break;
         case 'rafraichir':
             for ($i = 0; $i < count($qteArt); $i++) {

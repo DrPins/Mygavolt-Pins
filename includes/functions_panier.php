@@ -22,7 +22,7 @@ function creationPanier()
 }
 function ajouterProduit($id_prod, $lib_prod, $price_prod, $tva_prod, $qte_prod)
 {
-    //unset($_SESSION['panier']);
+    unset($_SESSION['panier']);
     //echo creationPanier();
     if (creationPanier() && !isVerrouille()) {
         //$_SESSION['panier']['id_prod'] = "";
@@ -83,7 +83,7 @@ function supprimerProd($id_prod)
         $tmp['lock'] = $_SESSION['panier']['lock'];
         // Pour chaque article dans mon panier, je vais copier le produit dans la liste temporaire sauf si c'est celui que l'on veut supprimer
         for ($i = 0; $i < count($_SESSION['panier']['id_prod']); $i++) {
-            echo '<br>produit ' . $i;
+           //echo '<br>produit ' . $i;
             if ($_SESSION['panier']['id_prod'][$i] !== $id_prod) {
                 array_push($tmp['id_prod'], $_SESSION['panier']['id_prod'][$i]);
                 array_push($tmp['lib_prod'], $_SESSION['panier']['lib_prod'][$i]);
@@ -113,14 +113,27 @@ function montantGlobal()
 function montantGlobalTTC()
 {
     $total = 0;
+
+    /*echo count($_SESSION['panier']['id_prod']);
+    echo '<pre>';
+    var_dump($_SESSION['panier']);
+    echo '</pre>';*/
+
     for ($i = 0; $i < count($_SESSION['panier']['id_prod']); $i++) {
         $total += ($_SESSION['panier']['qte_prod'][$i] * $_SESSION['panier']['price_prod'][$i]) * (100 + $_SESSION['panier']['tva_prod'][$i]) / 100;
     }
+
     $total = round($total, 2);
     return $total;
 }
 function supprimePanier()
 {
+
+    echo 'supprimer panier';
+    echo '<pre>';
+    var_dump($_SESSION['panier']['id_prod']);
+    echo '</pre>';
+
     // POUR SUPPRIMER LE PANIER SESSION
     unset($_SESSION['panier']);
     // POUR SUPPRIMER LE PANIER ENREGISTRE EN BASE
@@ -132,7 +145,7 @@ function supprimePanier()
             PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
         ));
     } catch (PDOException $e) {
-        die('<h1>Impossible de se connecter porut</h1>');
+        die('<h1>Impossible de se connecter</h1>');
     }
     $_SESSION['panier'] = array();
     $_SESSION['panier']['id_prod'] = array();

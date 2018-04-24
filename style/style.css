@@ -9,6 +9,22 @@ footer{
 
 }
 
+.btn1 {
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  color: #000000;
+  font-size: 20px;
+  background: #FEF6C9;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn1:hover {
+  background: #AEC3B0;
+  text-decoration: none;
+}
+
 
 
 .sidebar{

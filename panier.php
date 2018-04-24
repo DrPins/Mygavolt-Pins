@@ -31,17 +31,19 @@ if ($action !== null) {
         $q = intval($q);
     }
 }
+
 if (!$erreur) {
+
     switch ($action) {
         case 'ajoutProd':
-            echo 'Produit ajouté <br>';
+            //echo 'Produit ajouté <br>';
             // Modifications Oral PPE
             //1. si une session est ouvert
             //2. on stock dans une variable la session panier
             //3. on serialize la variable
             //4. update dans la table client du champ panier
             ajouterProduit($i, $l, $p, $t, $q);
-            echo $i . ' ' . $l . ' ' . $q;
+           // echo $i . ' ' . $l . ' ' . $q;
             echo '<br>';
             //var_dump($_SESSION['panier']);
             if (isset($_SESSION['user_id'])) {
@@ -60,6 +62,7 @@ if (!$erreur) {
             for ($i = 0; $i < count($qteArt); $i++) {
                 // le round est là pour être sur qu'il n'y ait pas une quantité à virgule
                 modifierQteProd($_SESSION['panier']['id_prod'][$i], round($qteArt[$i]));
+
                 if (isset($_SESSION['user_id'])) {
                     $user_id = $_SESSION['user_id'];
                     $panier_array = $_SESSION['panier'];
@@ -99,6 +102,7 @@ if (isset($_SESSION['user_id'])) {
 }
 // Suppresion du panier (session et en base si connecté)
 if (isset($_GET['deletepanier']) && $_GET['deletepanier'] == true) {
+
     supprimePanier();
 }
 // Si la varaible $_SESSION['panier'] n'existe pas, on va la créer et la fonction creation de panier va renvoyer true
@@ -145,9 +149,10 @@ if (creationPanier()) {
         // Affichage des produit du panier
         ?>
 
-		<h2>Votre Panier</h2>
+
 
         <div class="full_cart">
+            <h2>Votre Panier</h2><br>
 		<form method="post" action="">
 			<table class="table" >
 
@@ -198,9 +203,11 @@ if (creationPanier()) {
 
 								<tr>
 									<td colspan="4">
-										<button type="submit" class="btn btn-dark" value="rafraichir">Rafraichir les quantités</button>
+										<input class="btn1" type="submit" value="rafraichir" name="action" />
 
-										<a href="?deletepanier=true"><button type="submit" class="btn btn-dark" value="Supprimer">Supprimer le panier</button></a>
+                                        <a class="btn1" href="?deletepanier=true" >Supprimer panier</a>
+
+
 
 
 									</td>

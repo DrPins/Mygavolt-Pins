@@ -1,6 +1,4 @@
 </body>
-
-
       <!--Footer-->
       <footer class="page-footer font-small blue pt-4 mt-4 navbar-static-bottom ">
 

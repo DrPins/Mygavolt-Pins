@@ -32,7 +32,17 @@ if ($action !== null) {
     }
 }
 
+
+
+echo '<br><br><br><br><br>'.$erreur;
+
 if (!$erreur) {
+
+    echo "<pre>";
+    var_dump($_SESSION['panier']);
+    echo $action;
+    echo "</pre>";
+
 
     switch ($action) {
         case 'ajoutProd':
@@ -44,7 +54,6 @@ if (!$erreur) {
             //4. update dans la table client du champ panier
             ajouterProduit($i, $l, $p, $t, $q);
            // echo $i . ' ' . $l . ' ' . $q;
-            echo '<br>';
             //var_dump($_SESSION['panier']);
             if (isset($_SESSION['user_id'])) {
                 $user_id = $_SESSION['user_id'];
@@ -70,6 +79,8 @@ if (!$erreur) {
 
             break;
         case 'rafraichir':
+
+            echo "rafraichir";
             for ($i = 0; $i < count($qteArt); $i++) {
                 // le round est là pour être sur qu'il n'y ait pas une quantité à virgule
                 modifierQteProd($_SESSION['panier']['id_prod'][$i], round($qteArt[$i]));
@@ -218,7 +229,7 @@ if (creationPanier()) {
                                                                         <?php
                                         }?>
 
-										<input class="btn1" type="submit" value="Rafraichir" name="action" style="font-weight: bold;" />
+										<input class="btn1" type="submit" value="rafraichir" name="action" style="font-weight: bold;" />
 
                                         <a href="?deletepanier=true" ><input class="btn1"  type="button" value="Supprimer panier"/></a>
 

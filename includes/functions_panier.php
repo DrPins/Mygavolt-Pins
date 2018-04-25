@@ -22,7 +22,7 @@ function creationPanier()
 }
 function ajouterProduit($id_prod, $lib_prod, $price_prod, $tva_prod, $qte_prod)
 {
-    //unset($_SESSION['panier']);
+    unset($_SESSION['panier']);
     //echo creationPanier();
     if (creationPanier() && !isVerrouille()) {
         //$_SESSION['panier']['id_prod'] = "";

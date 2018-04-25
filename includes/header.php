@@ -39,7 +39,7 @@ session_start();
 	  <link rel="stylesheet" type="text/css" href="style/style.css">
 
 
-	<title></title>
+	<title>MYGAVOLT - matériel éléctrique</title>
 </head>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">

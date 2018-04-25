@@ -100,7 +100,7 @@ if(!isset($_SESSION['user_id'])){
 								<td><?php echo $s->date_achat; ?></td>
 								<td><?php echo $s->amount.$s->currency_code; ?></td>
 								<td><?php echo $s->shipping.$s->currency_code; ?></td>
-								<td><a href="?action=details&amp;id=<?php echo $s->id; ?>">Détails</a></td>
+								<!--<td><a href="?action=details&amp;id=<?php echo $s->id; ?>">Détails</a></td>-->
 
 
 							</tr>
@@ -127,7 +127,11 @@ if(!isset($_SESSION['user_id'])){
 					else if ($_GET['action']=='infoModif'){
 
 
+
 						if(isset($_POST['submit'])){
+
+							echo "submit ok";
+
 							$firstName = $_POST['inputFirstname'];
 							$lastName = $_POST['inputLastName'];
 							$company = $_POST['inputCompany'];
@@ -145,7 +149,7 @@ if(!isset($_SESSION['user_id'])){
 
 							$insert->execute();
 
-							header('Location: myaccount.php?action=infoPerso');
+							//header('Location: myaccount.php?action=infoPerso');
 
 
 							}

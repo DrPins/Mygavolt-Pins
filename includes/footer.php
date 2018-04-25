@@ -8,19 +8,22 @@
 
                   <!--First column-->
                   <div class="col-md-6">
-                      <h5 class="text-uppercase">Footer Content</h5>
+                      <h5 class="text-uppercase">Navigation</h5>
+                      <ul class="list-unstyled">
+                      <li><a href="boutique.php">Produits</a></li>
+                          <li><a href="panier.php">Panier</a></li>
+                          <li><a href="register.php">Inscription</a></li>
+                        </ul>
                       <p>.</p>
                   </div>
                   <!--/.First column-->
 
                   <!--Second column-->
                   <div class="col-md-6">
-                      <h5 class="text-uppercase">Links</h5>
-                      <ul class="list-unstyled">
+                      <h5 class="text-uppercase">Aide à la clientèle</h5>
+                      <ul class="list-unstyled" >
                           <li><a href="cgv.php">Conditions générales de vente</a></li>
-                          <li><a href="#!">Link 2</a></li>
-                          <li><a href="#!">Link 3</a></li>
-                          <li><a href="#!">Link 4</a></li>
+
                       </ul>
                   </div>
                   <!--/.Second column-->

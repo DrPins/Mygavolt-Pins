@@ -211,7 +211,7 @@ if (creationPanier()) {
 									<td colspan="6">
                                         <?php
                                         if (isset($_SESSION['user_id'])) {
-                                        ?><a href="process.php"><input type="button" value="Valider la commande"/></a><?php
+                                        ?><a href="process.php"><input type="button" class="btn1" value="Valider la commande"/></a><?php
                                         }
                                         else {?>
                                             <a  href="connect.php"><input class="btn1"  type="button" value="Se connecter pour passer commande"/></a>

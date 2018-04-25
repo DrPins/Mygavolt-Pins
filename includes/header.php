@@ -58,7 +58,7 @@ session_start();
       }
       else{
         ?>
-          <li><a href="myaccount.php">Mon Compte</a></li>
+          <li><a href="myaccount.php?action=infoPerso">Mon Compte</a></li>
           <li><a href="disconnect.php">Deconnexion</a></li>
         <?php
       }

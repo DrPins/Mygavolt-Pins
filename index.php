@@ -4,10 +4,10 @@ require_once('includes/header.php');?>
 
 <div class="index_home">
 
-<h3>Horaires ouverture :</h3>
-<ul>- lundi au vendredi : 9h - 18h</ul>
-<ul>- samedi : 9h - 20h</ul>
-<ul>- dimanche et jours fériés : fermé</ul>
+<h3>Horaires d'ouverture :</h3>
+<ul>lundi au vendredi : 9h - 18h</ul>
+<ul>samedi : 9h - 20h</ul>
+<ul>dimanche et jours fériés : fermé</ul>
 
 
 

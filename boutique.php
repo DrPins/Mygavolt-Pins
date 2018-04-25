@@ -74,7 +74,7 @@ if(isset($_GET['show'])){
 		<?php
 		// Vérification du stock, si le stock est positif on peut mettre le produit dans le panier
 		if($s->stock != 0){
-			?><a href="panier.php?action=ajoutProd&amp;i=<?php echo $s->id;?>&amp;l=<?php echo $s->label;?>&amp;p=<?php echo $prix_a_afficher;?>&amp;t=<?php echo $s->tva;?>&amp;q=1"><input type="button" value="Ajouter au panier"/></a><?php
+			?><a href="panier.php?action=ajoutProd&amp;i=<?php echo $s->id;?>&amp;l=<?php echo $s->label;?>&amp;p=<?php echo $prix_a_afficher;?>&amp;t=<?php echo $s->tva;?>&amp;q=1"><input type="button" class="btn1" 	value="Ajouter au panier"/></a><?php
 		}
 		// Si il est négatif, on affiche la rupture de stock sans lien vers le panier
 		else{

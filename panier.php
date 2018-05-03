@@ -34,15 +34,8 @@ if ($action !== null) {
 
 
 
-echo '<br><br><br><br><br>'.$erreur;
 
 if (!$erreur) {
-
-    echo "<pre>";
-    var_dump($_SESSION['panier']);
-    echo $action;
-    echo "</pre>";
-
 
     switch ($action) {
         case 'ajoutProd':
@@ -80,7 +73,7 @@ if (!$erreur) {
             break;
         case 'rafraichir':
 
-            echo "rafraichir";
+            //echo "rafraichir";
             for ($i = 0; $i < count($qteArt); $i++) {
                 // le round est là pour être sur qu'il n'y ait pas une quantité à virgule
                 modifierQteProd($_SESSION['panier']['id_prod'][$i], round($qteArt[$i]));
@@ -142,7 +135,7 @@ if (creationPanier()) {
         //On récupère les totaux via des fonctions
         $totalTTC = montantGlobalTTC();
         $totalHT = montantGlobal();
-        $TVA = $totalTTC - $totalHT;
+        $TVA = number_format($totalTTC - $totalHT, 2, ',', ' ');
         // Montant arbitraire
         $fraisDePort = 20;
         //#####################################PAYPAL#########################################
@@ -196,7 +189,7 @@ if (creationPanier()) {
 					<tr>
 						<td><?php echo $_SESSION['panier']['lib_prod'][$i]; ?></td>
 						<td><?php echo $_SESSION['panier']['price_prod'][$i]; ?>€</td>
-						<td><?php echo $_SESSION['panier']['tva_prod'][$i]; ?>%</td>
+						<td><?php echo number_format($_SESSION['panier']['tva_prod'][$i], 2, ',', ' '); ?>%</td>
 						<!-- champ pour modifier la quantité (il faudra cliquer sur actualiser pour appeler la fonction mettant à jour les quantités)  -->
 						<td><input name="q[]" value="<?php echo $_SESSION['panier']['qte_prod'][$i]; ?>" size="5"><td>
 						<!-- Lien pour supprimer un article  -->

@@ -95,10 +95,12 @@ if(!isset($_SESSION['user_id'])){
 							</tr>
 						<?php
 						while ($s = $select->fetch(PDO::FETCH_OBJ)) {
+							$da = $s->date_achat;
+							$d= substr($da,6,2).'/'.substr($da,4,2).'/'.substr($da,0,4);
 							?><tr>
 								<td><?php echo $s->id; ?></td>
-								<td><?php echo $s->date_achat; ?></td>
-								<td><?php echo $s->amount.$s->currency_code; ?></td>
+								<td><?php echo $d; ?></td>
+								<td><?php echo number_format($s->amount, 2, ',', ' ').$s->currency_code; ?></td>
 								<td><?php echo $s->shipping.$s->currency_code; ?></td>
 								<!--<td><a href="?action=details&amp;id=<?php echo $s->id; ?>">Détails</a></td>-->
 

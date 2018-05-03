@@ -31,11 +31,13 @@ if(isset($_SESSION['username'])){
 
     ?>
     <br>
+    <div class="full_cart">
+      <h2>Ajout d'une catégorie</h2>
     <form action="" method="post">
-    <h3>Nom catégorie :</h3><input type="text" name="label">
-    <input type="submit" name="submit" value="Ajouter">
+    <h3>Nom catégorie :</h3><input type="text" name="label" class="form-control"><br>
+    <input type="submit" name="submit" class="btn btn-warning"  value="Ajouter">
     </form>
-
+    </div>
     <?php
 
   }
@@ -51,6 +53,7 @@ if(isset($_SESSION['username'])){
         $select = $db->prepare("SELECT * FROM categories");
         $select->execute();
         ?>
+        <div class="full_cart">
         <table class="table">
           <tr>
               <th>Catégorie</th>
@@ -76,6 +79,7 @@ if(isset($_SESSION['username'])){
         }
         ?>
           </table>
+        </div>
         <?php
 
   }
@@ -94,13 +98,14 @@ if(isset($_SESSION['username'])){
 
         // on affiche ces données dans les champs
 ?>
+          <div class="full_cart">
+          <h2>Modifier une catégorie</h2>
+          <form action="" method="post">
+          <h3>Nom catégorie :</h3><input type="text" name="label" class="form-control" value="<?php echo $categorie->label; ?>"><br>
+          <input type="submit" name="submit" class="btn btn-warning"  value="Modifier">
+          </form>
+          </div>
 
-        <form action="" method="POST">
-
-          <h3>Nom catégorie :</h3><input class="form-control" type="text" name="label" value="<?php echo $categorie->label; ?>">
-          <input type="submit" name="submit" value = "Modifier">
-
-        </form>
     <?php
     // on récupère les données passées en POST et on les utilise pour faire l'update en base du produit
     if (isset($_POST['submit'])) {

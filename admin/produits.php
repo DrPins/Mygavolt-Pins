@@ -212,7 +212,7 @@ if(isset($_SESSION['username'])){
 
 
 ?>
-
+        <div class="full_cart">
         <form action="" method="POST" enctype="multipart/form-data">
 
         <?php
@@ -273,6 +273,7 @@ if(isset($_SESSION['username'])){
       <input type="submit" name="submit" value = "Modifier" class="btn btn-warning" role="button">
 
     </form>
+  </div>
     <?php
     // on récupère les données passées en POST et on les utilise pour faire l'update en base du produit
     if (isset($_POST['submit'])) {
@@ -388,12 +389,14 @@ if(isset($_SESSION['username'])){
 
         // on affiche ces données dans les champs
         ?>
+        <div class="account_home">
         <form action="" method="POST">
 
-          <h3>Stock :</h3><input type="text" name="stock" value="<?php echo $prod->stock; ?>">
+          <h3>Stock de <?php echo $prod->label; ?>:</h3><input type="text" name="stock" value="<?php echo $prod->stock; ?>"><br><br>
           <input type="submit" name="submit" value = "Modifier stock" class="btn btn-warning" role="button">
 
         </form>
+      </div>
     <?php
     // on récupère les données passées en POST et on les utilise pour faire l'update en base du produit
     if (isset($_POST['submit'])) {

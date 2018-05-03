@@ -37,7 +37,7 @@
   <div class="formulaire_admin_index">
       <h1> Mygavolt Administration - Connexion </h1>
 	  <form action="" method="POST">
-      	  <h3>Pseudo</h3>	<input type="text" name="username" class="form-control">
+      	  <h3>Login</h3>	<input type="text" name="username" class="form-control">
       	  <h3>Password</h3>	<input type="Password" name="password" class="form-control"><br>
               <input type="submit" name="submit">
 

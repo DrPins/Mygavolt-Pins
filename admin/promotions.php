@@ -31,11 +31,13 @@ if(isset($_SESSION['username'])){
     }
 
         ?>
+        <div class="full_cart">
     <h2>Ajout d'une promotion</h2>
     <form action="" method="post">
-    <h3>Pourcentage de réduction :</h3><input type="text" name="label">
+    <h3>Pourcentage promotion :</h3><input type="text" name="label" class="form-control"><br>
     <input type="submit" name="submit" value="Ajouter" class="btn btn-warning" role="button">
     </form>
+  </div>
 
     <?php
 
@@ -53,6 +55,7 @@ if(isset($_SESSION['username'])){
         $select = $db->prepare("SELECT * FROM promotions ORDER BY label");
         $select->execute();
         ?>
+        <div class="full_cart">
         <table class="table">
           <tr>
               <th>Promotions</th>
@@ -78,6 +81,7 @@ if(isset($_SESSION['username'])){
         }
         ?>
           </table>
+        </div>
         <?php
 
   }
@@ -96,12 +100,15 @@ if(isset($_SESSION['username'])){
 
         // on affiche ces données dans les champs
 ?>
+        <div class="full_cart">
+          <h2>Modification d'une promotion</h2>
         <form action="" method="POST">
 
-          <h3>Pourcentage promotion :</h3><input class="form-control" type="text" name="label" value="<?php echo $promo->label; ?>">
+          <h3>Pourcentage promotion :</h3><input class="form-control" type="text" name="label" value="<?php echo $promo->label; ?>"><br>
           <input type="submit" name="submit" value = "Modifier" class="btn btn-warning" role="button">
 
         </form>
+      </div>
     <?php
     // on récupère les données passées en POST et on les utilise pour faire l'update en base du produit
     if (isset($_POST['submit'])) {

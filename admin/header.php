@@ -40,7 +40,7 @@ $timestamp   = time();
     <link rel="stylesheet" type="text/css" href="../style/style.css">
 
 
-  <title></title>
+  <title>MYGAVOLT-Administration</title>
 </head>
 
     <nav class="navbar navbar-inverse">

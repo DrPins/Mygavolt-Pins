@@ -22,9 +22,18 @@ $timestamp   = time();
 
 
   <?php
-        $select = $db->prepare("SELECT * FROM  coordinates");
-        $select->execute();
+        $select = $db->prepare("SELECT * from coordinates where date_position in (select MAX(date_position) from coordinates group by id_employee)");
 
+        $select->execute();?>
+
+        <table class="table">
+          <tr>
+              <th>Employée</th>
+              <th>Heure </th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+          </tr>
+          <?php
         while($s=$select->fetch(PDO::FETCH_OBJ)){
           $c = $s->lat;
           $pos1 = strrpos($c, "(");
@@ -32,13 +41,17 @@ $timestamp   = time();
           $pos3 = strrpos($c, ")");
           $lat = substr($c, $pos1+1, $pos2-$pos1-1);
           $lng = substr($c, $pos2+1, $pos3-$pos2-1);
-
-
-          echo $lat." ".$lng."<br>";
+            ?>
+            <tr>
+              <td><?php echo $s->id_employee;?></td>
+              <td><?php echo $s->date_position;?></td>
+              <td><?php echo $lat;?></td>
+              <td><?php echo $lng;?></td>
+            </tr><?php
                 }
+                ?>
 
-?>
-
+          </table>
 </div>
 
 

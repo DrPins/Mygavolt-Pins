@@ -8,7 +8,7 @@ require_once('header.php');?>
 
 <a href="?action=modify" class="btn btn-warning" role="button">Modifier / Supprimer</a><br>
 
-
+<div class="full_cart">
 <?php
 // vérification qu'on a bien rentré un username
 if(isset($_SESSION['username'])){
@@ -65,7 +65,7 @@ if(isset($_SESSION['username'])){
 
     <form action="" method="POST" enctype="multipart/form-data">
 
-      <h3>Employé : </h3><select class="custom-select" name="employe">
+      <h3>Employé : </h3><select class="custom-select" name="employe" class="form-control" >
         <?php
           $select=$db->query("SELECT * FROM employees ORDER BY lastname");
           while ($s = $select->fetch(PDO::FETCH_OBJ)) {?>
@@ -74,7 +74,7 @@ if(isset($_SESSION['username'])){
           }
           ?></select>
 
-      <h3>Client    : </h3><select class="custom-select" name="client">
+      <h3>Client    : </h3><select class="custom-select" name="client" class="form-control" >
         <?php
           $select=$db->query("SELECT * FROM clients ORDER BY lastname");
           while ($s = $select->fetch(PDO::FETCH_OBJ)) {?>
@@ -82,7 +82,7 @@ if(isset($_SESSION['username'])){
             <?php
           }
           ?></select>
-      <h3>Motif       : </h3><select class="custom-select" name="motive">
+      <h3>Motif       : </h3><select class="custom-select" name="motive" class="form-control" >
         <?php
           $select=$db->query("SELECT * FROM motives ORDER BY label");
           while ($s = $select->fetch(PDO::FETCH_OBJ)) {?>
@@ -102,7 +102,7 @@ if(isset($_SESSION['username'])){
   <?php
 
   }
-  //************************************************************AFFICHAGE************************************************************
+  //************************************************************AFFICHAGE**************************************************
   else if ($_GET['action']=='modify'){
     // ce qu'il va se passer lorsque l'on va cliquer sur supprimer/modifier un produit
         ?>
@@ -113,20 +113,19 @@ if(isset($_SESSION['username'])){
         ?>
         <table class="table">
           <tr>
-                <th>N° d'intervention</th>
-                 <th>Employé</th>
-                 <th>Client</th>
-                 <th>Motif</th>
-                 <th>Date</th>
-                 <th>Pending</th>
-                 <th>Rapport</th>
-                 <th></th>
-                 <th></th>
-            </tr>
+             <th>N° d'intervention</th>
+             <th>Employé</th>
+             <th>Client</th>
+             <th>Motif</th>
+             <th>Date</th>
+             <th>Status</th>
+             <th>Rapport</th>
+             <th></th>
+             <th></th>
+          </tr>
 
           <?php
         while($s=$select->fetch(PDO::FETCH_OBJ)){
-
 
         $select_emp = $db->prepare("SELECT * FROM employees where id = '$s->id_employee'");
         $select_emp->execute();
@@ -144,6 +143,14 @@ if(isset($_SESSION['username'])){
         $select_motif->execute();
         $motif_label = $select_motif->fetch(PDO::FETCH_OBJ);
         $motif_label = $motif_label->label;
+
+        if($s->pending == 1){
+          $pending = "Effectué";
+        }
+        else{
+          $pending = "En Attente";
+        }
+
         ?>
           <tr>
             <td><?php echo $s->id;?></td>
@@ -151,12 +158,11 @@ if(isset($_SESSION['username'])){
             <td><?php echo $client_name;?></td>
             <td><?php echo $motif_label;?></td>
             <td><?php echo $s->date_inter;?></td>
-            <td><?php echo $s->pending;?></td>
+            <td><?php echo $pending;?></td>
             <td><a href="?action=modrapport&amp;id=<?php echo $s->id; ?>">Voir le rapport</a></td>
             <td><a href="?action=mod&amp;id=<?php echo $s->id; ?>">Modifier</a></td>
             <td><a href="?action=del&amp;id=<?php echo $s->id; ?>">X</a></td>
-
-
+          </tr>
 
           <?php
 
@@ -358,4 +364,5 @@ if(isset($_SESSION['username'])){
 
 
   }
-}
+}?>
+</div>

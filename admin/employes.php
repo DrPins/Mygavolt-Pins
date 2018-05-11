@@ -11,7 +11,24 @@ require_once('header.php');?>
 
 <?php
 
-echo $_POST['submit'];
+if(!isset($_GET['action'])){
+  ?>
+  <div class="full_cart">
+    <?php
+
+
+
+
+
+
+    ?>
+  </div>
+
+  <?php
+}
+
+
+//echo $_POST['submit'];
 
 // vérification qu'on a bien rentré un username
 if(isset($_SESSION['username'])){
@@ -147,6 +164,7 @@ if(isset($_SESSION['username'])){
         $select = $db->prepare("SELECT * FROM employees");
         $select->execute();
         ?>
+        <div class="full_cart">
         <table class="table">
           <tr>
             <th>Nom                           </th>
@@ -179,7 +197,7 @@ if(isset($_SESSION['username'])){
             ?></td>
 
             <td><a href="?action=mod&amp;id=<?php echo $s->id; ?>">Modifier</a></td>
-
+          </tr>
 
 
 
@@ -187,7 +205,8 @@ if(isset($_SESSION['username'])){
 
         }
 
-        ?></table><?php
+        ?></table>
+        </div><?php
 
   }
   //************************************************************MODIFICATION************************************************************

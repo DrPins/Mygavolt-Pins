@@ -6,6 +6,8 @@ require_once('header.php');?>
 <a href="?action=addmotif" class="btn btn-warning" role="button">Ajouter </a>
 <a href="?action=modifymotif" class="btn btn-warning" role="button">Modifier / Supprimer</a><br>
 
+<div class="full_cart">
+
 <?php
 // vérification qu'on a bien rentré un username
 if(isset($_SESSION['username'])){
@@ -132,4 +134,5 @@ if(isset($_SESSION['username'])){
 
 
   }
-}
+}?>
+</div>

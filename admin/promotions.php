@@ -34,7 +34,7 @@ if(isset($_SESSION['username'])){
         <div class="full_cart">
     <h2>Ajout d'une promotion</h2>
     <form action="" method="post">
-    <h3>Pourcentage promotion :</h3><input type="text" name="label" class="form-control"><br>
+    <h3>Pourcentage promotion :</h3><input type="text" name="label" class="form-control"><
     <input type="submit" name="submit" value="Ajouter" class="btn btn-warning" role="button">
     </form>
   </div>

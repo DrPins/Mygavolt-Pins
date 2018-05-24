@@ -1,0 +1,273 @@
+/* fonts */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/*Animations*/
+		/* Safari 4.0 - 8.0 */
+		@-webkit-keyframes accueil {
+		    0%   {left:20vw;}
+		    50%  {left:25vw;}
+		    100% {left:20vw;}
+		}
+
+		/* Standard syntax */
+		@keyframes accueil {
+		    0%   {left:20vw;}
+		    50%  {left:25vw;}
+		    100% {left:20vw;}} 
+
+/*fond d'écran*/
+	#feuilles1 {
+		width: 70vw;
+		position: fixed;
+		transform: rotate(60deg);
+		right: -35vw;}
+
+	#iconemenu {
+		position: fixed;
+	    top : 0px;
+		width: 4%;
+		left: 4vw;
+		top: 4vw;
+		z-index: 2;}
+
+/*page index*/
+
+	#logonomxl {
+		position: absolute;
+		width: 38vw;
+		top: 8vw;
+		left: 23vw;}
+	#desc_asso {
+		color: #379ec4;
+		font-family: roboto;
+		text-align: center;
+		font-size: 1vw;
+		position: absolute;
+		bottom: 20px;
+		width: 50vw;
+		margin-left: 24vw;}
+
+/*formulaires*/
+
+	fieldset { 
+		width: 45vw;
+		border:0.3vw solid orange;
+		}
+
+	.formulaire {
+		position: absolute;
+		width: 55%;
+		height:100%;
+		top: 8vw;
+		left: 15vw;
+		font-family: Roboto;
+		color: black;}
+
+	.box {
+		position: absolute;
+		width: 15vw;
+		left: 20vw;}
+
+	fieldset { border:0.2vw solid orange;
+				width: 50vw;}
+
+	legend {
+	  padding: 0.2em 0.5em;
+	  color: black;
+	  font-size:2vw;
+	  font-weight: bold;
+	  text-align:left;
+	  }
+
+	#dd{
+	width:5vw;
+	} 
+	#mm{
+	width:5vw;
+	} 
+	#aaaa{
+	width:7vw;
+	} 
+
+	.champs {
+	position: absolute;
+	left: 200px;
+	width: 20vw;
+	}
+
+	.lab {
+		font-weight: bold;
+		text-align: right;
+		width: 130px;
+		display: inline-block;
+	}
+
+/*menu latéral*/
+	#volet {		
+		background-color: #379ec4;
+		position: fixed;
+		top: 0%; 
+		height: 200vw;
+		width: 14vw;
+		padding: 0px;
+		left: -250px;
+		z-index: 8;
+		-webkit-transition: left 1s; /* Safari */
+	    transition: left 1s;}
+
+	#liens {
+		position: absolute;
+		left:-4vw;
+		top: 5vw;
+		text-decoration: none;}
+
+	li {list-style-type: none;
+}
+
+
+	#ulmenu {
+	    list-style-type: none;
+	    border-radius: 10px;
+	   
+	    text-align: left;}
+
+	#ulmenu li a {    
+	    display: block;
+	    color: white;
+	    padding: 2vw;
+	    text-decoration: none;
+	    font-size: 1.5vw;
+	    font-family: Roboto;}
+
+	#ulmenu li a:hover {
+	    color: white;
+	    font-size: 1.6vw;}
+
+	#ulplan li a {
+		display: block;
+		color: black;
+	    padding: 0vw;
+	    text-decoration: none;
+	    font-size: 1.5vw;
+	    font-family: Roboto;
+	    list-style-type: square;
+	}
+
+
+/*bouton retour accueil*/
+	#logoaccueil {		
+		position: absolute;
+		width: 10vw;
+		left: 20vw;
+		top: -6vw;
+		transition: top 1s;
+		animation-name: accueil;
+	    animation-duration: 2s;}
+
+	#accueil { 	
+		font-family: Roboto;
+		position: relative;
+		font-size: 3vw;
+		left :30vw;
+		color: white;
+		text-decoration: none;
+		-webkit-transition: color 1s; /* Safari */
+	    transition: color 1s;}
+
+/*contenu*/
+	a {
+		text-decoration: none;}
+
+	h1 {	
+		color: orange;
+		font-family: roboto;
+		font-size: 2.4vw;}
+
+	h2 {	
+		color: #468963;
+		font-family: roboto;
+		font-size: 1.8vw;}
+
+	.cadre_content a {
+		color: black;
+		font-family: Roboto;
+		font-size: 2vw;
+	}
+
+	.cadre_content li:before {
+		content: "+"; 
+	}
+
+	.cadre_content {	
+		color: black;
+		font-family: roboto;
+		font-size: 1.25vw;
+		text-align:justify;
+		position: absolute;
+		width: 55vw;
+		top: 10%;
+		left: 15%;}
+
+	.illunews{
+		float: left;
+		width: 20vw;
+		margin-right: 1vw;
+	
+		filter: grayscale(1);
+	}
+/*version anglaise*/
+	#english{
+		width: 2vw;
+	}
+
+	th {border-bottom: 1px solid black;
+		width: 20%;}
+	td {border-bottom: 1px solid black;
+		}
+/*carte et adresses*/
+	#maps {
+		width: 50vw;
+		text-align:justify;
+		position: absolute;
+		top: 6vw;
+		left: 17vw;
+	}
+
+	#liste_adresses {
+		position: absolute;
+		top : 56vw;
+	}
+
+	#table_adresses {
+		font-family: Roboto;
+		font-size: 1vw;
+		width: 50vw;
+		left: 17vw;
+		position: absolute;
+
+	}
+
+/*image nous rejoindre*/
+	#illupage {	
+		position: fixed;
+		filter: grayscale(1);
+		width: 17vw;
+		top: 35vw;
+		right: 10vw;
+		-webkit-transition: filter 1s; /* Safari */
+	    transition: filter 1s;}
+
+	#nousrejoindre {
+		position: fixed;
+		background-color: #379ec4;
+		width: 17vw;
+		height: 2vw;
+		top: 45.5vw;
+		right: 10vw;;
+		font-family: Roboto;
+		font-size: 1.5vw;
+		text-align: center;
+		color: white;
+		-webkit-transition: top 1s; /* Safari */
+	    transition: top 1s;	}

@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LPF - Contact</title>
+	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" type="image/png" href="images/favicondet.png" />
+
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+<img src="images/feuilles.png" id="feuilles1" >
+<a href="#" onmouseover="ouvreV()"><img src="images/iconemenu.png" id="iconemenu"></a>
+
+</head>
+
+<body>
+
+	<div id="volet" onmouseout="fermeV()">
+
+		<div id="liens" onmouseover="ouvreV()">
+			<ul id="ulmenu">
+			  <li><a href="news.html">Actualités</a></li>
+			  <li><a href="missions.html">Présentation</a></li>
+			  <li><a href="histoire.html">Histoire</a></li>
+			  <li><a href="Localisations.html">Nous trouver</a></li>
+			  <li><a href="contact.html">Nous rejoindre</a></li>
+			  <li><a href="plan.html">Plan du site</a></li>
+			</ul>
+		</div>
+	</div>
+
+<span onmouseover="descL()" onmouseout="monteL()" id="retou_accueil">
+<a href="accueil.html" ><img src="images/newlogo.png" id="logoaccueil" >
+<span id="accueil" >Accueil</span></a>
+</span>
+
+
+<div class="formulaire">
+<form  method="post" action="merci.html">
+<fieldset>
+<legend>Contact </legend>
+<!-- Civilite-->
+	<label for="civilite" class="lab">Civilité</label><br>
+	<span style="position: absolute; left: 200px;">
+		<input type="radio" name="civilite" id="Madame"  value="Madame" checked="checked" /> 
+		<label for="Madame">Madame</label>
+		<input type="radio" name="civilite" id ="Monsieur" value="Monsieur"  /> 
+		<label for="Monsieur">Monsieur</label>
+	</span>
+	<br>
+<!-- nom-->
+	<label for="nom" class="lab">Nom</label>
+	<input type="text" id="nom" name="nom" class="champs" onblur="verifNomPrenom(this)" /> <br><br>
+<!-- prénom-->
+	<label for="prenom" class="lab">Prénom</label>
+	<input type="text" id="prenom" name="prenom" class="champs" onblur="verifNomPrenom(this)"  /> <br><br>
+<!-- mail-->
+	<label for="mail" class="lab">E-Mail</label>
+	<input type="text" id="mail" name="mail" onblur="verifMail(this)" class="champs" /> <br><br>
+
+<!-- Date de naissance-->
+	<span class="lab">Date de naissance </span>
+	<span style="position: absolute; left: 200px;">
+	<input type="number" name="dd" id="dd" min="1" max="31" ><label for="dd">DD</label>
+	<input type="number" name="mm" id="mm" min="1" max="12" ><label for="mm">MM</label>
+	<input type="number" name="aaaa" id="aaaa" min="1880" max="2017"><label for="aaaa">AAAA</label></span><br><br>
+<!-- Adresse-->
+	<div id="block2" >
+	<span class="lab">Adresse</span><br>
+	<label for="rue" class="champs" >Numéro, rue, voie</label><br>
+	<input type="text" name="rue" id="rue" class="champs" ><br>
+	<label for="etage" class="champs" >Appartement, bâtiment, étage, etc.</label><br>
+	<input type="text" name="etage" id="etage" class="champs" ><br>
+	<label for="lieudit" class="champs" >Lieu-dit</label><br>
+	<input type="text" name="lieudit" id="lieudit" class="champs" ><br>
+	<label for="complement" class="champs" >Complement d'adresse</label><br>
+	<input type="text" name="complement" id="complement" class="champs" ><br><br>
+	</div>
+
+<!-- code postal-->
+	<label for="cp" class="lab">Code Postal</label>
+	<input type="text" name="cp" id="cp" maxlength="5" class="champs" ><br><br>
+<!-- ville-->
+	<label for="ville" class="lab">Ville</label>
+	<input type="text" name="ville" id="ville" class="champs" ><br><br>
+<!-- pays-->
+	<label for="pays" class="lab">Pays</label>
+	<SELECT name="pays" id="pays" size="1" class="champs">
+	<OPTION>France
+	<OPTION>Belgique
+	<OPTION>Roubaix
+	</SELECT><br><br>
+<!-- telephone fixe-->
+	<label for="telfix" class="lab">Téléphone fixe</label>
+	<input type="tel" name="telfix" id="telfix" class="champs" ><br><br>
+<!-- telephone mobile-->
+	<label for="mobile" class="lab">Téléphone portable</label>
+	<input type="tel" name="mobile" id="mobile" class="champs" ><br><br>
+
+<br>
+</fieldset>
+
+<fieldset>
+<legend>Informations Complémentaires</legend>
+<p>Je suis interessé(e) pour être bénévole sur :</p>
+	<input type="checkbox" name="vacances" /> 
+	<label for="vacances">Vacances</label><br />
+    <input type="checkbox" name="Noel" /> 
+    <label for="Noel">Noël</label><br />
+    <input type="checkbox" name="Visites"/> 
+    <label for="Visites">Visites à domicile ou en résidence</label><br />
+    <input type="checkbox" name="TpsForts" /> 
+    <label for="TpsForts">Temps Forts</label><br><br>
+<p>Je suis possède une voiture :</p>
+	<input type="radio" name="Voiture" value="Oui" checked="checked" /> 
+	<label for="Oui">0ui</label>
+	<input type="radio" name="Voiture" value="Non"/>
+	<label for="Non">Non</label>
+<br><br>
+
+	<input id="bouton" type="submit" value="Valider" />
+
+
+</fieldset>
+</form>
+</div>
+
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LPF - Contact</title>
+<!-- sources javascript charset feuille de style et favicon -->
+	<script type="text/javascript" src="script.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="icon" type="image/png" href="images/favicondet.png" />
+<!-- fond d'écran feuille et icone menu en haut à gauche-->	
+<img src="images/feuilles.png" id="feuilles1" >
+<a href="#" onmouseover="ouvreV()"><img src="images/iconemenu.png" id="iconemenu"></a>
+
+</head>
+
+<body>
+<!-- ************************************************ Partie Fixe ************************************************ -->
+<!-- Volet-->
+
+<div id="volet_en" onmouseout="fermeV_en()">
+
+<div id="volet" onmouseout="fermeV()">
+
+		<div id="liens" onmouseover="ouvreV()">
+			<ul id="ulmenu">
+			  
+			  <li><a href="missions_english.html">Missions</a></li>
+			  <li><a href="history.html">History</a></li>
+			  <li><a href="actions.html">Actions</a></li>
+			  <li><a href="contact_english.html">Join us</a></li>
+			  
+			</ul>
+		</div>
+	</div>
+<!-- Logo de retour accueil -->
+<span onmouseover="descL()" onmouseout="monteL()" id="retou_accueil">
+<a href="accueil.html" ><img src="images/newlogo.png" id="logoaccueil" >
+<span id="accueil" >Accueil</span></a>
+</span>
+
+<!-- ************************************************ Partie Mobile ************************************************ -->
+
+<div class="formulaire">
+<form  method="post" action="welcome.html">
+<fieldset>
+<legend>Contact</legend>
+	<input type="radio" name="civilite" value="Madame" checked="checked" /> 
+	<label for="Madame">Mrs</label>
+
+	<input type="radio" name="civilite" value="Monsieur"/>
+	<label for="Monsieur">Mr</label>
+	<br><br>
+
+	<label for="Nom">Last Name : </label>
+	<input type="text" name="Nom" class="box"/>
+	<br><br>
+
+	<label for="Prenom">First Name : </label>
+	<input type="text" name="Prenom" class="box"/>
+	<br><br>
+
+	<label for="Mail">E-Mail : </label>
+	<input type="E-Mail" name="Mail" class="box"/>
+	<br><br>
+
+	<label for="Tel">Phone : </label>
+	<input type="tel" name="Tel" class="box"/>
+	<br><br>
+
+</fieldset>
+
+<fieldset>
+<legend>Extra informations</legend>
+<p>I want to volunteer for :</p>
+	<input type="checkbox" name="vacances" /> 
+	<label for="vacances">Holidays</label><br />
+    <input type="checkbox" name="Noel" /> 
+    <label for="Noel">Christmas</label><br />
+    <input type="checkbox" name="Visites"/> 
+    <label for="Visites">Visits</label><br />
+    <input type="checkbox" name="TpsForts" /> 
+    <label for="TpsForts">Highlights</label><br><br>
+<p>I have my own car :</p>
+	<input type="radio" name="Voiture" value="Oui" checked="checked" /> 
+	<label for="Oui">Yes</label>
+	<input type="radio" name="Voiture" value="Non"/>
+	<label for="Non">No</label>
+<br><br>
+
+	<input id="bouton" type="submit" value="Submit" />
+
+
+</fieldset>
+</form>
+</div>
+
+
+
+</body>
+
+</html>

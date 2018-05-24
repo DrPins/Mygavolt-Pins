@@ -1,0 +1,144 @@
+      body {
+        font: 20px "Montserrat", sans-serif;
+        line-height: 1.8;
+        color: #f5f6f7;
+    }
+
+    p {font-size: 16px;}
+
+    th{
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .fond_veille{
+        background-color: white !important;
+        padding-left: 5vw;
+        color: black;
+        font-size: 20px;
+        margin-left: 10vw;
+        margin-right: 10vw;
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+    }
+
+     .fond_methodo{
+        padding-left: 5vw;
+        color: black;
+        font-size: 20px;
+        margin-left: 10vw;
+        margin-right: 10vw;
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+    }
+
+
+    h3{font-size: 40px;
+        margin: 2vh;}
+
+        #titre{
+            font-size: 2vw;
+            text-align: left;
+        }
+
+        ul{
+            font-size: 14px;
+            list-style-type: none;
+
+            padding: 10px;
+
+            text-align: left;
+        }
+
+        .col-sm-4{
+            border-color: #6fb6bc;
+            border-width: 2px;
+            border-style: solid;
+            margin: 15px;
+            width: 31%;
+            height: 45vh;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .margin {margin-bottom: 45px;}
+        .bg-1 {
+          background-color: #6fb6bc; /* Blue */
+          color: #ffffff;
+      }
+      .bg-2 {
+          background-color: #666970; /* Dark Blue */
+          color: #ffffff;
+      }
+      .bg-3 {
+          background-color: #ffffff; /* White */
+          color: #555555;
+      }
+
+      .container-fluid {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .navbar {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border: 0;
+        border-radius: 0;
+        margin-bottom: 0;
+        font-size: 12px;
+        letter-spacing: 5px;
+    }
+
+    .navbar-nav li a:hover {
+        color: #6fb6bc !important;
+    }
+
+    .bg-4 {
+        background-color: #2f2f2f;
+        color: #ffffff;
+    }
+
+    #avatar{
+    	height: 35vh;
+    	margin: 8vh;
+        margin-top: none;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transform: rotate(2deg);
+    }
+
+    .logo-ets{
+    	height: 15vh;
+
+    	max-width: 60vw;
+    	/*filter: grayscale(100%);*/
+    }
+
+    .banner{
+        height: 80vh;
+    }
+
+    .logo-ecole{
+        height: 12vh;
+
+        max-width: 30vw;
+        /*filter: grayscale(100%);*/
+    }
+
+  /*  .col-sm-4{
+    	background-color: #16C494; /* Green
+        }*/
+
+    #row_xp{
+        margin: 2vh;
+    }
+
+ .image-portfolio{
+        height: 15vh;
+
+        max-width: 60vw;
+        /*filter: grayscale(100%);*/
+    }
+
+.table-hover{
+    color: red;
+}

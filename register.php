@@ -38,22 +38,22 @@ if(isset($_POST['submit'])){
 	<div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputFirstname">Prénom</label>
-      <input type="text" class="form-control" id="inputFirstname" placeholder="Prénom" name="inputFirstname">
+      <input type="text" pattern="[a-zA-Z\u00C0-\u017F\][^'\x22]+$" class="form-control" id="inputFirstname" placeholder="Prénom" name="inputFirstname">
     </div>
     <div class="form-group col-md-6">
       <label for="inputLastName">Nom</label>
-      <input type="text" class="form-control" id="inputLastName" placeholder="Nom" name="inputLastName">
+      <input type="text" class="form-control" pattern="[a-zA-Z\u00C0-\u017F\][^'\x22]+$" id="inputLastName" placeholder="Nom" name="inputLastName">
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCompany">Entreprise</label>
-      <input type="text" class="form-control" id="inputCompany" placeholder="Entreprise" name="inputCompany">
+      <input type="text" class="form-control" id="inputCompany" pattern="[a-zA-Z\u00C0-\u017F\][^'\x22]+$" placeholder="Entreprise" name="inputCompany">
     </div>
     <div class="form-group col-md-6">
       <label for="inputSIRET">SIRET</label>
-      <input type="text" pattern="[0-99999999999999]" class="form-control" id="inputSIRET" placeholder="SIRET" name="inputSIRET">
+      <input type="text" pattern="[0-9]{3}[ \.\-]?[0-9]{3}[ \.\-]?[0-9]{3}[ \.\-]?[0-9]{5}" class="form-control" id="inputSIRET" placeholder="SIRET" name="inputSIRET">
     </div>
   </div>
 
@@ -85,7 +85,7 @@ if(isset($_POST['submit'])){
     </div>
     <div class="form-group col-md-2">
       <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip" name="inputZip">
+      <input type="text"   class="form-control" id="inputZip" name="inputZip">
     </div>
   </div>
 

@@ -4,38 +4,38 @@ require_once('includes/header.php');
 
 if(!isset($_SESSION['user_id'])){
 
-if(isset($_POST['submit'])){
-	$firstName = $_POST['inputFirstname'];
-	$lastName = $_POST['inputLastName'];
-	$company = $_POST['inputCompany'];
-	$siret = $_POST['inputSIRET'];
-	$email = $_POST['inputEmail'];
-	$pwd = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT, ['cost' =>12]);
-  $address1 = $_POST['inputAddress'];
-	$address2 = $_POST['inputAddress2'];
-	$city = $_POST['inputCity'];
-	$zipcode = $_POST['inputZip'];
+  if(isset($_POST['submit'])){
+   $firstName = $_POST['inputFirstname'];
+   $lastName = $_POST['inputLastName'];
+   $company = $_POST['inputCompany'];
+   $siret = $_POST['inputSIRET'];
+   $email = $_POST['inputEmail'];
+   $pwd = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT, ['cost' =>12]);
+   $address1 = $_POST['inputAddress'];
+   $address2 = $_POST['inputAddress2'];
+   $city = $_POST['inputCity'];
+   $zipcode = $_POST['inputZip'];
 
-	if($email&&$pwd){
-		$insert = $db->prepare("INSERT INTO clients (firstname, lastname, company, SIRET, email, pwd,	address1, address2, city, zipcode)
-				VALUES('$firstName', '$lastName', '$company', '$siret', '$email', '$pwd', '$address1', '$address2', '$city', '$zipcode') ");
+   if($email&&$pwd){
+    $insert = $db->prepare("INSERT INTO clients (firstname, lastname, company, SIRET, email, pwd,	address1, address2, city, zipcode)
+      VALUES('$firstName', '$lastName', '$company', '$siret', '$email', '$pwd', '$address1', '$address2', '$city', '$zipcode') ");
 
-	$insert->execute();
+    $insert->execute();
 
-	header('Location: connect.php');
+    header('Location: connect.php');
 
 
-	}
-	else{
-		echo '<br><h1>tous les champs ne sont pas remplis</h1>';
-	}
+  }
+  else{
+    echo '<br><h1>tous les champs ne sont pas remplis</h1>';
+  }
 }
 
 ?>
 
 <div class="index_home">
-<form action="" method="POST" class="form_inscription">
-	<div class="form-row">
+  <form action="" method="POST" class="form_inscription">
+   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputFirstname">Prénom</label>
       <input type="text" pattern="[a-zA-Z\u00C0-\u017F\][^'\x22]+$" class="form-control" id="inputFirstname" placeholder="Prénom" name="inputFirstname">

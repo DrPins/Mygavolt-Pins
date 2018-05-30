@@ -6,16 +6,16 @@ require_once('includes/header.php');
 $select = $db->query("SELECT *  FROM categories");
 ?>
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">CATEGORIES</a>
-    </div>
-    <ul class="nav navbar-nav">
-    	<?php while($s = $select->fetch(PDO::FETCH_OBJ)){ ?>
-      <li ><a href="?category=<?php echo $s->id;?> "><?php echo $s->label;?></a></li>
-      <?php } ?>
-    </ul>
-  </div>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">CATEGORIES</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<?php while($s = $select->fetch(PDO::FETCH_OBJ)){ ?>
+				<li ><a href="?category=<?php echo $s->id;?> "><?php echo $s->label;?></a></li>
+			<?php } ?>
+		</ul>
+	</div>
 </nav>
 
 
@@ -79,12 +79,12 @@ if(isset($_GET['show'])){
 		// Si il est négatif, on affiche la rupture de stock sans lien vers le panier
 		else{
 			?><h4>Rupture de Stock</h4><?php
-			}
-			?>
+		}
+		?>
 
 
 	</div>
-		<?php
+	<?php
 //########################################FIN - DETAIL PRODUIT################################################################################
 }
 
@@ -110,80 +110,80 @@ else{
 		$select = $db->prepare("SELECT * FROM products ");
 		$select->execute();
 	}
-		$lenght = 150;
+	$lenght = 150;
 			//tant qu'il y a des objets dans ce qui a été récupéré par la requete
 			//on affiche la meme chose que pour le détail produit
-		?>
-		<div class="container">
-		    <div id="products" class="row list-group"><?php
-						while($s=$select->fetch(PDO::FETCH_OBJ)){?>
+	?>
+	<div class="container">
+		<div id="products" class="row list-group"><?php
+		while($s=$select->fetch(PDO::FETCH_OBJ)){?>
 
-						<?php
+			<?php
 
 
-						$pourcentage_id = $s->id_promotion;
+			$pourcentage_id = $s->id_promotion;
 
-						$promo = $db->prepare("SELECT * FROM promotions where id = '$pourcentage_id'");
-						$promo->execute();
+			$promo = $db->prepare("SELECT * FROM promotions where id = '$pourcentage_id'");
+			$promo->execute();
 
-						$p = $promo->fetch(PDO::FETCH_OBJ);
+			$p = $promo->fetch(PDO::FETCH_OBJ);
 
 						// Récupération de la descritpion raccourcie
-						$short_description = substr($s->description, 0, $lenght);
+			$short_description = substr($s->description, 0, $lenght);
 						// à la ligne automatiquement après n caractères
-						$final_description = wordwrap($short_description);
-						?>
+			$final_description = wordwrap($short_description);
+			?>
 
-		        <div class="item  col-xs-4 col-lg-4">
-		            <div class="thumbnail">
-		                <img class="group list-group-image" src="admin/imgs/<?php echo $s->nom_img?>.jpg"  alt="<?php echo $s->label?>" href="?show=<?php echo $s->id;?>" />
-		                <div class="caption">
-		                    <h4 class="group inner list-group-item-heading">
-		                        <?php echo $s->label;?></h4>
-		                    <p class="group inner list-group-item-text">
-		                        <?php echo $final_description;?><a href="?show=<?php echo $s->id;?>"> plus ...</a></p>
-		                    <div class="row">
-		                        <div class="col-xs-12 col-md-6"><br>
+			<div class="item  col-xs-4 col-lg-4">
+				<div class="thumbnail">
+					<img class="group list-group-image" src="admin/imgs/<?php echo $s->nom_img?>.jpg"  alt="<?php echo $s->label?>" href="?show=<?php echo $s->id;?>" />
+					<div class="caption">
+						<h4 class="group inner list-group-item-heading">
+							<?php echo $s->label;?></h4>
+							<p class="group inner list-group-item-text">
+								<?php echo $final_description;?><a href="?show=<?php echo $s->id;?>"> plus ...</a></p>
+								<div class="row">
+									<div class="col-xs-12 col-md-6"><br>
 
-		                                <?php
+										<?php
 
-																			if ($p->label != 0){
-																				$prix_a_afficher = $s->price *(100 - $p->label)/100;
-																				?><div class="prix_barre"><?php echo number_format($s->price, 2, '.', ' ');?>€ HT</div>
-																				<div class="promotion_couleur"> - <?php echo $p->label;?>%</div>
-																				<?php
-																			}
-																			else
-																			{
-																				$prix_a_afficher = $s->price;
-																		}?>
-																<p class="lead">
-																	<?php echo number_format($prix_a_afficher, 2, '.', ' ');?>€ HT
-																</p>
-		                        </div>
-		                        <div class="col-xs-12 col-md-6">
-		                        		<br>
-		                            <?php
-																		if($s->stock != 0){
-																			?><a href="panier.php?action=ajoutProd&amp;i=<?php echo $s->id;?>&amp;l=<?php echo $s->label;?>&amp;p=<?php echo $prix_a_afficher;?>&amp;t=<?php echo $s->tva;?>&amp;q=1"><button type="submit" class="btn btn-dark" value="Supprimer">Ajouter au Panier</button></a>	<?php
-																		}
-																		else{
-																			?><h4>Rupture de Stock</h4><?php
-																		}
-																?>
-		                        </div>
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-<?php
+										if ($p->label != 0){
+											$prix_a_afficher = $s->price *(100 - $p->label)/100;
+											?><div class="prix_barre"><?php echo number_format($s->price, 2, '.', ' ');?>€ HT</div>
+											<div class="promotion_couleur"> - <?php echo $p->label;?>%</div>
+											<?php
+										}
+										else
+										{
+											$prix_a_afficher = $s->price;
+										}?>
+										<p class="lead">
+											<?php echo number_format($prix_a_afficher, 2, '.', ' ');?>€ HT
+										</p>
+									</div>
+									<div class="col-xs-12 col-md-6">
+										<br>
+										<?php
+										if($s->stock != 0){
+											?><a href="panier.php?action=ajoutProd&amp;i=<?php echo $s->id;?>&amp;l=<?php echo $s->label;?>&amp;p=<?php echo $prix_a_afficher;?>&amp;t=<?php echo $s->tva;?>&amp;q=1"><button type="submit" class="btn btn-dark" value="Supprimer">Ajouter au Panier</button></a>	<?php
+										}
+										else{
+											?><h4>Rupture de Stock</h4><?php
+										}
+										?>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<?php
 
-						}// fin de la boucle while?>
+				}// fin de la boucle while?>
 
-			   </div>
 			</div>
+		</div>
 
-<?php
+		<?php
 
 	}
 

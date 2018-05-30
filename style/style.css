@@ -19,22 +19,24 @@ footer{
 }
 
 .btn1 {
-  -webkit-border-radius: 8;
-  -moz-border-radius: 8;
-  border-radius: 8px;
-  color: #ffffff;
-  font-size: 15px;
-  background: #725752;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
+	-webkit-border-radius: 8;
+	-moz-border-radius: 8;
+	border-radius: 8px;
+	color: #ffffff;
+	font-size: 15px;
+	background: #725752;
+	padding: 10px 20px 10px 20px;
+	text-decoration: none;
 }
 
 .btn1:hover {
-  background: #878E88;
-  text-decoration: none;
+	background: #878E88;
+	text-decoration: none;
 }
 
-
+.mychart{
+	width: 5%;
+}
 
 .sidebar{
 	background-color: black;
@@ -142,13 +144,13 @@ a{
 }
 
 .navbar.center .navbar-inner {
-    text-align: center;
+	text-align: center;
 }
 
 .navbar.center .navbar-inner .nav {
-    display:inline-block;
-    float: none;
-    vertical-align: top;
+	display:inline-block;
+	float: none;
+	vertical-align: top;
 }
 
 .produit-box{

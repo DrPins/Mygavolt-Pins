@@ -16,10 +16,10 @@ $date_achat = date("Ymd");
 $user_id = $_SESSION['user_id'];
 for ($i = 0; $i < count($_SESSION['panier']['lib_prod']); $i++) {
     //va rajouter à l'array product l'id du produit
-    $products .= $_SESSION['panier']['id_prod'][$i];
-    if ($i <= 1) {
-        $products .= ', ';
-    }
+  $products .= $_SESSION['panier']['id_prod'][$i];
+  if ($i <= 1) {
+    $products .= ', ';
+  }
 }
 
 // récupération de l'adresse du client
@@ -66,12 +66,12 @@ for ($i=0; $i < count($_SESSION['panier']['lib_prod']) ; $i++) {
 }
 
 $insert = $db->prepare("INSERT INTO transactions ( name, street, city, date_achat, transaction_id, amount, shipping, currency_code, user_id, products)
-        VALUES( '$client_name', '$client_adress', '$client_city', '$date_achat', $timestamp, '$totalTTC', '$fraisDePort', '$currency_code', '$user_id', '$products') ");
+  VALUES( '$client_name', '$client_adress', '$client_city', '$date_achat', $timestamp, '$totalTTC', '$fraisDePort', '$currency_code', '$user_id', '$products') ");
 $insert->execute();
 
 unset($_SESSION['panier']);
 supprimePanier();
-header('Location: success.php');
+//header('Location: success.php');
 
 
 //**********************************end***********************************************

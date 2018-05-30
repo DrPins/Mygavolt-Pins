@@ -45,51 +45,51 @@ if (!$erreur) {
             //2. on stock dans une variable la session panier
             //3. on serialize la variable
             //4. update dans la table client du champ panier
-            ajouterProduit($i, $l, $p, $t, $q);
+        ajouterProduit($i, $l, $p, $t, $q);
            // echo $i . ' ' . $l . ' ' . $q;
             //var_dump($_SESSION['panier']);
-            if (isset($_SESSION['user_id'])) {
-                $user_id = $_SESSION['user_id'];
-                $panier_array = $_SESSION['panier'];
-                $panier_string = serialize($panier_array);
+        if (isset($_SESSION['user_id'])) {
+            $user_id = $_SESSION['user_id'];
+            $panier_array = $_SESSION['panier'];
+            $panier_string = serialize($panier_array);
                 //$_SESSION['panier']['lock']=false;
-                $insert = $db->prepare("UPDATE clients SET panier = '$panier_string' WHERE id = '$user_id' ");
-                $insert->execute();
-            }
-            break;
+            $insert = $db->prepare("UPDATE clients SET panier = '$panier_string' WHERE id = '$user_id' ");
+            $insert->execute();
+        }
+        break;
         case 'supprimerProd':
-            supprimerProd($i);
+        supprimerProd($i);
 
-            if (isset($_SESSION['user_id'])) {
-                $user_id = $_SESSION['user_id'];
-                $panier_array = $_SESSION['panier'];
-                $panier_string = serialize($panier_array);
+        if (isset($_SESSION['user_id'])) {
+            $user_id = $_SESSION['user_id'];
+            $panier_array = $_SESSION['panier'];
+            $panier_string = serialize($panier_array);
                 //$_SESSION['panier']['lock']=false;
-                $insert = $db->prepare("UPDATE clients SET panier = '$panier_string' WHERE id = '$user_id' ");
-                $insert->execute();
-            }
+            $insert = $db->prepare("UPDATE clients SET panier = '$panier_string' WHERE id = '$user_id' ");
+            $insert->execute();
+        }
 
 
-            break;
+        break;
         case 'rafraichir':
 
             //echo "rafraichir";
-            for ($i = 0; $i < count($qteArt); $i++) {
+        for ($i = 0; $i < count($qteArt); $i++) {
                 // le round est là pour être sur qu'il n'y ait pas une quantité à virgule
-                modifierQteProd($_SESSION['panier']['id_prod'][$i], round($qteArt[$i]));
+            modifierQteProd($_SESSION['panier']['id_prod'][$i], round($qteArt[$i]));
 
-                if (isset($_SESSION['user_id'])) {
-                    $user_id = $_SESSION['user_id'];
-                    $panier_array = $_SESSION['panier'];
-                    $panier_string = serialize($panier_array);
+            if (isset($_SESSION['user_id'])) {
+                $user_id = $_SESSION['user_id'];
+                $panier_array = $_SESSION['panier'];
+                $panier_string = serialize($panier_array);
                     //$_SESSION['panier']['lock']=false;
-                    $insert = $db->prepare("UPDATE clients SET panier = '$panier_string' WHERE id = '$user_id' ");
-                    $insert->execute();
-                }
+                $insert = $db->prepare("UPDATE clients SET panier = '$panier_string' WHERE id = '$user_id' ");
+                $insert->execute();
             }
-            break;
+        }
+        break;
         default:
-            break;
+        break;
     } //fin switch
 } // fin de if
 //Modification Oral Pour sauvegarder le panier de la session en base si on est connecté
@@ -159,87 +159,87 @@ if (creationPanier()) {
         var_dump($paypal->errors);
         var_dump($response);
         die('Erreur paypal');
-        }*/
+    }*/
         //#####################################FIN - PAYPAL#########################################
         // Affichage des produit du panier
-        ?>
+    ?>
 
 
 
-        <div class="full_cart">
-            <h2>Votre Panier</h2><br>
-		<form method="post" action="">
-			<table class="table" >
+    <div class="full_cart">
+        <h2>Votre Panier</h2><br>
+        <form method="post" action="">
+         <table class="table" >
 
-				<tr>
-					<th> Nom produit</th>
-					<th> Prix unitaire HT</th>
-					<th> TVA</th>
-					<th> Quantité </th>
-					<th></th>
-					<th> Supprimer</th>
-				</tr>
+            <tr>
+               <th> Nom produit</th>
+               <th> Prix unitaire HT</th>
+               <th> TVA</th>
+               <th> Quantité </th>
+               <th></th>
+               <th> Supprimer</th>
+           </tr>
 
-				<?php
+           <?php
 // on regarde combien de ligne il y a dans le panier
         // on les parcourt un par un dans la boucle
         // on les affiche dans le tableau
-        for ($i = 0; $i < $nbProd; $i++) {
+           for ($i = 0; $i < $nbProd; $i++) {
             ?>
-					<tr>
-						<td><?php echo $_SESSION['panier']['lib_prod'][$i]; ?></td>
-						<td><?php echo $_SESSION['panier']['price_prod'][$i]; ?>€</td>
-						<td><?php echo number_format($_SESSION['panier']['tva_prod'][$i], 2, ',', ' '); ?>%</td>
-						<!-- champ pour modifier la quantité (il faudra cliquer sur actualiser pour appeler la fonction mettant à jour les quantités)  -->
-						<td><input name="q[]" value="<?php echo $_SESSION['panier']['qte_prod'][$i]; ?>" size="5"><td>
-						<!-- Lien pour supprimer un article  -->
-						<td><a href="panier.php?action=supprimerProd&amp;i=<?php echo rawurlencode($_SESSION['panier']['id_prod'][$i]); ?>">X</a></td>
-					</tr><?php
-}?>
-								<tr>
-									<td colspan="2"><br>
-											<p>Total HT : <?php echo $totalHT ?> € </p>
-											<p>TVA : <?php echo $TVA; ?> €</p>
-											<p>Total TTC :<?php echo $totalTTC; ?> € </p><br>
-											<br>
+            <tr>
+              <td><?php echo $_SESSION['panier']['lib_prod'][$i]; ?></td>
+              <td><?php echo $_SESSION['panier']['price_prod'][$i]; ?>€</td>
+              <td><?php echo number_format($_SESSION['panier']['tva_prod'][$i], 2, ',', ' '); ?>%</td>
+              <!-- champ pour modifier la quantité (il faudra cliquer sur actualiser pour appeler la fonction mettant à jour les quantités)  -->
+              <td><input name="q[]" value="<?php echo $_SESSION['panier']['qte_prod'][$i]; ?>" size="5"><td>
+                  <!-- Lien pour supprimer un article  -->
+                  <td><a href="panier.php?action=supprimerProd&amp;i=<?php echo rawurlencode($_SESSION['panier']['id_prod'][$i]); ?>">X</a></td>
+                  </tr><?php
+              }?>
+              <tr>
+               <td colspan="2"><br>
+                 <p>Total HT : <?php echo $totalHT ?> € </p>
+                 <p>TVA : <?php echo $TVA; ?> €</p>
+                 <p>Total TTC :<?php echo $totalTTC; ?> € </p><br>
+                 <br>
 
 
-										<!--	<a href="<?php //echo $paypal; ?>"><input type="button" value="Payer avec Paypal Sandbox *"/></a><br>-->
-									</td>
-									<td></td><td></td><td></td><td></td>
+                 <!--	<a href="<?php //echo $paypal; ?>"><input type="button" value="Payer avec Paypal Sandbox *"/></a><br>-->
+             </td>
+             <td></td><td></td><td></td><td></td>
 
 
-								</tr>
+         </tr>
 
-								<tr>
-									<td colspan="6">
-                                        <?php
-                                        if (isset($_SESSION['user_id'])) {
-                                        ?><a href="process.php"><input type="button" class="btn1" value="Valider la commande"/></a><?php
-                                        }
-                                        else {?>
-                                            <a  href="connect.php"><input class="btn1"  type="button" value="Se connecter pour passer commande"/></a>
-                                                                        <?php
-                                        }?>
+         <tr>
+           <td colspan="6">
+            <?php
+            if (isset($_SESSION['user_id'])) {
+                ?><a href="process.php"><input type="button" class="btn1" value="Valider la commande"/></a><?php
+            }
+            else {?>
+                <a  href="connect.php"><input class="btn1"  type="button" value="Se connecter pour passer commande"/></a>
+                <?php
+            }?>
 
-										<input class="btn1" type="submit" value="rafraichir" name="action" style="font-weight: bold;" />
+            <input class="btn1" type="submit" value="rafraichir" name="action" style="font-weight: bold;" />
 
-                                        <a href="?deletepanier=true" ><input class="btn1"  type="button" value="Supprimer panier"/></a>
-
-
+            <a href="?deletepanier=true" ><input class="btn1"  type="button" value="Supprimer panier"/></a>
 
 
-									</td>
-									<td></td><td></td>
-								</tr>
 
 
-					</table>
+        </td>
+        <td></td><td></td>
+    </tr>
 
 
-				</form>
-                </div><?php
-    }
+</table>
+
+
+</form>
+</div><?php
+}
 }
 ?>
 

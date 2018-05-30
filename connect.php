@@ -5,44 +5,44 @@ require_once('includes/header.php');
 if(!isset($_SESSION['user_id'])){
 
 
-if(isset($_POST['submit'])){
+  if(isset($_POST['submit'])){
 
   // récupération de la saisie mail et pwd
-	$email = $_POST['inputEmail'];
-	$pwdSubmitted = $_POST['inputPassword'];
+   $email = $_POST['inputEmail'];
+   $pwdSubmitted = $_POST['inputPassword'];
 
   // si les 2 champs sont bien remplis
-	if($email&&$pwdSubmitted){
+   if($email&&$pwdSubmitted){
     // on regarde en base en mettant l'adresse mail en parametre
-		$select = $db->query("SELECT * FROM clients WHERE email='$email'");
+    $select = $db->query("SELECT * FROM clients WHERE email='$email'");
     // si on récupère au moins un résultat
-		if($select->fetchColumn()){
+    if($select->fetchColumn()){
 
-			$select = $db->query("SELECT * FROM clients WHERE email='$email'");
-			$result = $select->fetch(PDO::FETCH_OBJ);
+     $select = $db->query("SELECT * FROM clients WHERE email='$email'");
+     $result = $select->fetch(PDO::FETCH_OBJ);
         // on vérifie que le mot de passe encrypté en base correspond bien à celui soumis
-        if (password_verify($pwdSubmitted, $result->pwd )){
+     if (password_verify($pwdSubmitted, $result->pwd )){
 
-  			$_SESSION['user_id'] = $result->id;
-        echo $_SESSION['user_id'];
-  			$_SESSION['user_firstname'] = $result->firstname;
-  			$_SESSION['user_email'] = $result->email;
+       $_SESSION['user_id'] = $result->id;
+       echo $_SESSION['user_id'];
+       $_SESSION['user_firstname'] = $result->firstname;
+       $_SESSION['user_email'] = $result->email;
   			//$_SESSION['user_pw'] = $result->pwd;
-        header('Location:myaccount.php');
-        }
-		}
-		else{
-			echo '<h2>L\'identifiant n\'existe pas ou le mot de passe est incorect </h2>';
-		}
+       header('Location:myaccount.php');
+     }
+   }
+   else{
+     echo '<h2>L\'identifiant n\'existe pas ou le mot de passe est incorect </h2>';
+   }
 
-	}
+ }
   // si les 2 champs ne sont pas remplis
-	else{
-		echo '<br><h1>tous les champs ne sont pas remplis</h1>';
-	}
+ else{
+  echo '<br><h1>tous les champs ne sont pas remplis</h1>';
+}
 }
 
-  ?>
+?>
 <div class="index_home">
   <h2>Se connecter</h2>
 
@@ -67,7 +67,7 @@ if(isset($_POST['submit'])){
   </a>
 </div>
 
-  <?php
+<?php
 }
 else{
 	header('Location:myaccount.php');

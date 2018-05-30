@@ -7,16 +7,16 @@ header('Content-Type: application/json');
 //$_POST['id_motive']= 299998;
 
 try{
-    $db = new PDO('sqlsrv:Server=wserver.area42.fr;Database=mygavoltpins', 'mygavolt', 'k2Y*bswsaFyss3j7*Hsf',array(
-        PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8',
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
-    ));
-    $retour["success"] = true;
-    $retour["message"] = "Connexion à la base";
+  $db = new PDO('sqlsrv:Server=wserver.area42.fr;Database=mygavoltpins', 'mygavolt', 'k2Y*bswsaFyss3j7*Hsf',array(
+    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES UTF8',
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING
+  ));
+  $retour["success"] = true;
+  $retour["message"] = "Connexion à la base";
 
 }catch(PDOException $e){
-    $retour["success"] = false;
-    $retour["message"] = "Connexion à la base de donnée impossible";
+  $retour["success"] = false;
+  $retour["message"] = "Connexion à la base de donnée impossible";
 }
 
 
@@ -33,7 +33,7 @@ if(!empty($_POST['id_intervention'])){
 }
 else{
   $requete = $db->prepare("SELECT * FROM interventions order by date_inter");
-$requete->execute();
+  $requete->execute();
 }
 
 $retour["interventions"]["nb"] = count($requete->fetchAll());
@@ -50,7 +50,7 @@ if(!empty($_POST['id_client'])){
 }
 else{
   $requete = $db->prepare("SELECT * FROM clients");
-$requete->execute();
+  $requete->execute();
 }
 
 $retour["clients"]["nb"] = count($requete->fetchAll());
@@ -67,7 +67,7 @@ if(!empty($_POST['id_motive'])){
 }
 else{
   $requete = $db->prepare("SELECT * FROM motives");
-$requete->execute();
+  $requete->execute();
 }
 
 $retour["motifs"]["nb"] = count($requete->fetchAll());

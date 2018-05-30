@@ -15,100 +15,100 @@ if(isset($_SESSION['username'])){
   if(isset($_GET['action'])){
     // si le code action est en mode 'ajout'
 
-  if ($_GET['action']=='addcat'){
+    if ($_GET['action']=='addcat'){
 
-    if(isset($_POST['submit'])){
-      $label = $_POST['label'];
-      if($label){
-        $insert = $db->prepare("INSERT INTO categories (label) VALUES ('$label')");
-        $insert->execute();
+      if(isset($_POST['submit'])){
+        $label = $_POST['label'];
+        if($label){
+          $insert = $db->prepare("INSERT INTO categories (label) VALUES ('$label')");
+          $insert->execute();
 
+        }
+        else{
+          echo "Veuillez renseigner un nom de catégorie";
+        }
       }
-      else{
-        echo "Veuillez renseigner un nom de catégorie";
-      }
+
+      ?>
+      <br>
+      <div class="full_cart">
+        <h2>Ajout d'une catégorie</h2>
+        <form action="" method="post">
+          <h3>Nom catégorie :</h3><input type="text" name="label" class="form-control"><br>
+          <input type="submit" name="submit" class="btn btn-warning"  value="Ajouter">
+        </form>
+      </div>
+      <?php
+
     }
-
-    ?>
-    <br>
-    <div class="full_cart">
-      <h2>Ajout d'une catégorie</h2>
-    <form action="" method="post">
-    <h3>Nom catégorie :</h3><input type="text" name="label" class="form-control"><br>
-    <input type="submit" name="submit" class="btn btn-warning"  value="Ajouter">
-    </form>
-    </div>
-    <?php
-
-  }
 //************************************************************CATEGORIES************************************************************
 //************************************************************AFFICHER***************************************************************
-  else if ($_GET['action']=='modifycat'){
+    else if ($_GET['action']=='modifycat'){
 
         // ce qu'il va se passer lorsque l'on va cliquer sur supprimer/modifier une catégorie
         // on commence par afficher la liste
-        ?>
-        <br>
-        <?php
-        $select = $db->prepare("SELECT * FROM categories");
-        $select->execute();
-        ?>
-        <div class="full_cart">
+      ?>
+      <br>
+      <?php
+      $select = $db->prepare("SELECT * FROM categories");
+      $select->execute();
+      ?>
+      <div class="full_cart">
         <table class="table">
           <tr>
-              <th>Catégorie</th>
-              <th>Action </th>
-              <th>Supprimer</th>
+            <th>Catégorie</th>
+            <th>Action </th>
+            <th>Supprimer</th>
           </tr>
 
-        <?php
-        while($s=$select->fetch(PDO::FETCH_OBJ)){
-          ?>
-          <tr>
-            <td>
           <?php
-          echo $s->label;
+          while($s=$select->fetch(PDO::FETCH_OBJ)){
+            ?>
+            <tr>
+              <td>
+                <?php
+                echo $s->label;
+                ?>
+              </td>
+              <td><a href="?action=modcat&amp;id=<?php echo $s->id; ?>">Modifier</a></td>
+              <td><a href="?action=delcat&amp;id=<?php echo $s->id; ?>">X</a></td>
+
+            </tr>
+            <?php
+
+          }
           ?>
-        </td>
-          <td><a href="?action=modcat&amp;id=<?php echo $s->id; ?>">Modifier</a></td>
-          <td><a href="?action=delcat&amp;id=<?php echo $s->id; ?>">X</a></td>
+        </table>
+      </div>
+      <?php
 
-          </tr>
-          <?php
-
-        }
-        ?>
-          </table>
-        </div>
-        <?php
-
-  }
+    }
 //************************************************************CATEGORIES************************************************************
 //************************************************************MODIFICATION************************************************************
-  else if ($_GET['action']=='modcat'){
+    else if ($_GET['action']=='modcat'){
     // ce qu'il va se passer lorsque l'on va cliquer sur modifier
 
 
-        $id=$_GET['id'];
+      $id=$_GET['id'];
         // on récupère les données du produit dans une variable
-        $select = $db->prepare("SELECT * FROM categories WHERE id = $id");
-        $select->execute();
+      $select = $db->prepare("SELECT * FROM categories WHERE id = $id");
+      $select->execute();
 
-        $categorie = $select->fetch(PDO::FETCH_OBJ);
+      $categorie = $select->fetch(PDO::FETCH_OBJ);
 
         // on affiche ces données dans les champs
-?>
-          <div class="full_cart">
-          <h2>Modifier une catégorie</h2>
-          <form action="" method="post">
+      ?>
+      <div class="full_cart">
+        <h2>Modifier une catégorie</h2>
+        <form action="" method="post">
           <h3>Nom catégorie :</h3><input type="text" name="label" class="form-control" value="<?php echo $categorie->label; ?>"><br>
           <input type="submit" name="submit" class="btn btn-warning"  value="Modifier">
-          </form>
-          </div>
+        </form>
+      </div>
 
-    <?php
+      <?php
     // on récupère les données passées en POST et on les utilise pour faire l'update en base du produit
-    if (isset($_POST['submit'])) {
+      if (isset($_POST['submit'])) {
 
         $label = $_POST['label'];
 
@@ -117,23 +117,23 @@ if(isset($_SESSION['username'])){
         $update->execute();
 
 
-    }?>
+      }?>
 
 
 
-    <?php
+      <?php
 
-  }
+    }
 //************************************************************CATEGORIES************************************************************
 //************************************************************SUPPRESSION***********************************************************
-  else if ($_GET['action']=='delcat'){
+    else if ($_GET['action']=='delcat'){
     // ce qu'il va se passer lorsque l'on va cliquer sur X
-        $id = $_GET['id'];
-        $del = $db->prepare("DELETE FROM categories WHERE id=$id");
-        $del->execute();
+      $id = $_GET['id'];
+      $del = $db->prepare("DELETE FROM categories WHERE id=$id");
+      $del->execute();
 
-        ?><meta http-equiv="refresh" content="1;url=categories.php?action=modifycat"/><?php
+      ?><meta http-equiv="refresh" content="1;url=categories.php?action=modifycat"/><?php
 
-  }
+    }
 
-}}
+  }}
